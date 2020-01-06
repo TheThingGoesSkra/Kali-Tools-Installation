@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<root>
+
+	<Resources>
+		<SecLists>
+			<cmd>git clone https://github.com/danielmiessler/SecLists /opt/resources/seclists;</cmd>
+		</SecLists>
+		<Malwares-samples>
+			<cmd>git clone https://github.com/fabrimagic72/malware-samples /opt/resources/malwares;</cmd>
+		</Malwares-samples>
+	</Resources>
+
+
+	<IDE>
+		<Atom>
+			<cmd>wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -; sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list';sudo apt-get update;echo 'Y' | sudo apt-get install atom;</cmd>
+		</Atom>
+	</IDE>
+
+
+	<Windows>
+		<Impacket>
+			<cmd>git clone https://github.com/SecureAuthCorp/impacket /opt/windows/impacket</cmd>
+		</Impacket>
+		<Bloodhound>
+			<cmd>git clone https://github.com/adaptivethreat/Bloodhound /opt/windows/bloodhound; curl -sL https://deb.nodesource.com/setup_13.x | bash -; apt-get install -y nodejs; npm install -g electron-packager; cd /opt/windows/bloodhound; npm install; npm run linuxbuild; cd /opt/windows; wget https://neo4j.com/artifact.php?name=neo4j-community-3.5.12-unix.tar.gz -O neo4j-community-3.5.12-unix.tar.gz; tar -xzf neo4j-community-3.5.12-unix.tar.gz; rm neo4j-community-3.5.12-unix.tar.gz;</cmd>
+		</Bloodhound>
+		<Sysinternal>
+			<cmd>cd /opt/windows; mkdir sysinternalssuite; wget https://download.sysinternals.com/files/SysinternalsSuite.zip; mv SysinternalsSuite.zip sysinternalssuite; cd sysinternalssuite; unzip SysinternalsSuite.zip;</cmd>
+		</Sysinternal>
+		<MremoteNG-Decrypt>
+			<cmd>cd /opt/windows; git clone https://github.com/haseebT/mRemoteNG-Decrypt mremoteng-decrypt; cd mremoteng-decrypt; pip install pyinstaller; pyinstaller mremoteng_decrypt.py; pip install pycryptodome; pip install pycryptodomex;</cmd>
+		</MremoteNG-Decrypt>
+		<Evil-Winrm>
+			<cmd>gem install evil-winrm;</cmd>
+		</Evil-Winrm>
+	</Windows>
+
+
+	<Linux>
+		<Pspy>
+			<cmd>cd /opt/linux; mkdir pspy; cd pspy; wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64; wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32;</cmd>
+		</Pspy>
+		<LinEnum>
+			<cmd>git clone https://github.com/rebootuser/LinEnum /opt/Linux/linenum;</cmd>
+		</LinEnum>
+	</Linux>
+
+
+	<Web>
+		<Burpsuite>
+			<cmd>cd $PWD_START; apt-get install libnss3-tools; echo "alias proxy='export http_proxy=\"http://127.0.0.1:8080\";export https_proxy=\"http://127.0.0.1:8080\"'" >> ~/.bashrc; echo "alias noproxy='export http_proxy=\"\";export https_proxy=\"\"'" >> ~/.bashrc; echo "y" | java -Djava.awt.headless=true -Xmx1g -jar /bin/burpsuite &amp;; export APP_PID=$!; sleep 25; wget -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080 http://burp/cert -O cacert.der; sleep 5; sudo kill -SIGTERM $APP_PID; firefox --no-remote -CreateProfile proxy; folder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit); certutil -A -n Burp -t "CT,c,c" -d "${folder}" -i cacert.der; cat prefs.js.old > "$folder/prefs.js"; echo "alias fireprox='firefox -p proxy -no-remote'" >> ~/.bashrc; sudo openssl x509 -in cacert.der -inform DER -out burp.crt; sudo cp burp.crt /usr/local/share/ca-certificates/burp.crt; update-ca-certificates;</cmd>
+		</Burpsuite>
+		<Kadimus>
+			<cmd>cd /opt/web; git clone https://github.com/P0cL4bs/Kadimus; cd Kadimus; echo "Y" | apt-get install libcurl4-openssl-dev libpcre++-dev; apt-get instibpcre++-dev; echo "Y" | apt-get install libssh-dev; make;</cmd>
+		</Kadimus>
+	</Web>
+
+
+	<Cracking>
+		<Hexedit>
+			<cmd>apt-get install hexedit;</cmd>
+		</Hexedit>
+		<Cisco_pwdecrypt>
+			<cmd>git clone https://github.com/axcheron/cisco_pwdecrypt /opt/cracking/cisco_pwdecrypt;</cmd>
+		</Cisco_pwdecrypt>
+	</Cracking>
+
+
+	<Reverse>
+		<Ropper>
+			<cmd>pip install ropper;</cmd>
+		</Ropper>
+		<Gdb-peda>
+			<cmd>git clone https://github.com/longld/peda.git /opt/reverse/peda; echo "source /opt/reverse/peda/peda.py" >> ~/.gdbinit;</cmd>
+		</Gdb-peda>
+	</Reverse>
+
+
+	<Blockchain>
+		<Rpc-check>
+			<cmd>npm install rpc-check -g;</cmd>
+		</Rpc-check>
+	</Blockchain>
+
+
+	<OSINT>
+	</OSINT>
+
+</root>
