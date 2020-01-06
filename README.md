@@ -55,11 +55,11 @@ Thus, three aliases are configured:
 
 To add new tools, only the "Tools.xml" file must be modified according to the following pattern :
 
-<Catégorie>
+```<Category>
   <Tool>
     <cmd>   Install script   </cmd>
   </Tool>
-</Catégorie>
+</Category>```
 
 
 You can introduce new tools in already existing categories, like creating new categories.
