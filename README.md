@@ -63,5 +63,5 @@ To add new tools, only the "Tools.xml" file must be modified according to the fo
 </Category>
 ```
 
-You can introduce new tools in already existing categories, like creating new categories.
+Feel free to introduce new tools in already existing categories, like creating new categories.
 
