@@ -35,6 +35,10 @@ And the other ones are situed in the opt directorie:
     │   └─────── linenum
     ├── web
     │   └─────── kadimus
+    │   └─────── phpbash
+    │   └─────── p0wny-shell
+    │   └─────── Wall6e-Web-Scripts
+
     ├── osint
     │   └─────── teeth
     ├── reverse
