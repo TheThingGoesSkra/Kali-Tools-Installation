@@ -42,14 +42,14 @@
 			<cmd>cd /opt/linux; mkdir pspy; cd pspy; wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64; wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32;cd $PWD_START;</cmd>
 		</Pspy>
 		<linEnum>
-			<cmd>git clone https://github.com/rebootuser/LinEnum /opt/Linux/linenum;cd $PWD_START;</cmd>
+			<cmd>git clone https://github.com/rebootuser/LinEnum /opt/linux/linenum;cd $PWD_START;</cmd>
 		</linEnum>	
 	</Linux>
 
 
 	<Web>
 		<Burpsuite>
-			<cmd>apt-get install libnss3-tools; echo "alias proxy='export http_proxy=\"http://127.0.0.1:8080\";export https_proxy=\"http://127.0.0.1:8080\"'" >> ~/.bashrc; echo "alias noproxy='export http_proxy=\"\";export https_proxy=\"\"'" >> ~/.bashrc; echo "y" | java -Djava.awt.headless=true -Xmx1g -jar /bin/burpsuite &amp;; export APP_PID=$!; sleep 25; wget -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080 http://burp/cert -O cacert.der; sleep 5; sudo kill -SIGTERM $APP_PID; firefox --no-remote -CreateProfile proxy; folder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit); certutil -A -n Burp -t "CT,c,c" -d "${folder}" -i cacert.der; cat prefs.js.old > "$folder/prefs.js"; echo "alias fireprox='firefox -p proxy -no-remote'" >> ~/.bashrc; sudo openssl x509 -in cacert.der -inform DER -out burp.crt; sudo cp burp.crt /usr/local/share/ca-certificates/burp.crt; update-ca-certificates;cd $PWD_START;</cmd>
+			<cmd>apt-get install libnss3-tools; echo "alias proxy='export http_proxy=\"http://127.0.0.1:8080\";export https_proxy=\"http://127.0.0.1:8080\"'" >> ~/.bashrc; echo "alias noproxy='export http_proxy=\"\";export https_proxy=\"\"'" >> ~/.bashrc; echo "y" | java -Djava.awt.headless=true -Xmx1g -jar /bin/burpsuite &amp; export APP_PID=$!; sleep 25; wget -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080 http://burp/cert -O cacert.der; sleep 5; sudo kill -SIGTERM $APP_PID; firefox --no-remote -CreateProfile proxy; folder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit); certutil -A -n Burp -t "CT,c,c" -d "${folder}" -i cacert.der; cat prefs.js.old > "$folder/prefs.js"; echo "alias fireprox='firefox -p proxy -no-remote'" >> ~/.bashrc; sudo openssl x509 -in cacert.der -inform DER -out burp.crt; sudo cp burp.crt /usr/local/share/ca-certificates/burp.crt; update-ca-certificates;cd $PWD_START;</cmd>
 		</Burpsuite>
 		<Kadimus>
 			<cmd>cd /opt/web; git clone https://github.com/P0cL4bs/Kadimus; cd Kadimus; echo "Y" | apt-get install libcurl4-openssl-dev libpcre++-dev; apt-get instibpcre++-dev; echo "Y" | apt-get install libssh-dev; make;cd $PWD_START;</cmd>
