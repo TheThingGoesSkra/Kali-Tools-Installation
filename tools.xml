@@ -41,9 +41,9 @@
 		<Pspy>
 			<cmd>cd /opt/linux; mkdir pspy; cd pspy; wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64; wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32;</cmd>
 		</Pspy>
-		<LinEnum>
+		<linEnum>
 			<cmd>git clone https://github.com/rebootuser/LinEnum /opt/Linux/linenum;</cmd>
-		</LinEnum>
+		</linEnum>	
 	</Linux>
 
 
@@ -54,6 +54,12 @@
 		<Kadimus>
 			<cmd>cd /opt/web; git clone https://github.com/P0cL4bs/Kadimus; cd Kadimus; echo "Y" | apt-get install libcurl4-openssl-dev libpcre++-dev; apt-get instibpcre++-dev; echo "Y" | apt-get install libssh-dev; make;</cmd>
 		</Kadimus>
+		<phpBash>
+			<cmd>git clone https://github.com/Arrexel/phpbash /opt/Linux/phpbash;</cmd>
+		</phpBash>
+		<p0wny-shell>
+			<cmd>git clone https://github.com/flozz/p0wny-shell /opt/Linux/p0wny-shell;</cmd>
+		<p0wny-shell>
 	</Web>
 
 
