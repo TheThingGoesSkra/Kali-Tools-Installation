@@ -40,6 +40,6 @@ for node in $nodes; do
 		int=$((3*($choice-1)))
 		arrayRef=tab_${node}[1+$int]
 		echo -e "\e[92m--------------------------------------------------------------\n                         \e[0m"${!arrayRef}"\e[92m                           \n--------------------------------------------------------------\e[0m"
-		eval $(xmlstarlet sel -T -t -m "//$node" -m "*[$choice]" -v '*' -n tools.xml)
+		eval $(cat tools.xml | xmlstarlet sel -T -t -m "//$node" -m "*[$choice]" -v '*')
 	done
 done
