@@ -7,6 +7,7 @@ echo "Y" | apt-get install npm
 echo "Y" |apt-get install git
 apt-get install rpcbind
 apt-get install dialog
+apt-get install xmlstarlet
 
 nodes=$(xmlstarlet sel -T -t -m "//root" -m '*' -v "name()" -n tools.xml)
 for node in $nodes; do
