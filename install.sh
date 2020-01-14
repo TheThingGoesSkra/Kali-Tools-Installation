@@ -43,6 +43,7 @@ echo -e "\e[92m--------------------------------------------------------------\n 
 cd ~;
 git init;
 git remote add origin https://github.com/TheThingGoesSkra/Bash_config.git;
+rm .bashrc;
 git pull origin master;
 cd $PWD_START;
 
