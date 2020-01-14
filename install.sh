@@ -38,6 +38,7 @@ echo "Y" |apt-get install git
 apt-get install golang
 apt-get install rpcbind
 apt-get install libnss3-tools;
+
 ########################## Bash configuration ##########################
 echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mBash configuration\e[92m                           \n--------------------------------------------------------------\e[0m"
 cd ~;
@@ -47,6 +48,10 @@ rm .bashrc;
 git pull origin master;
 cd $PWD_START;
 
+########################## System optimisation ##########################
+echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mSystem optimisation\e[92m                           \n--------------------------------------------------------------\e[0m"
+echo "vm.swappiness=10" >> /etc/sysctl.conf
+sed -i -e 's/\(GRUB_TIMEOUT=\).*/\10/' /etc/default/grub
 
 for node in $nodes; do
 	var=choices_$node[@]
