@@ -34,8 +34,8 @@ mv /opt/Teeth /opt/osint/ 2>/dev/null
 ########################## Dependances ##########################
 echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mDependences\e[92m                           \n--------------------------------------------------------------\e[0m"
 echo "Y" | apt-get install npm
-echo "Y" |apt-get install git
-apt-get install golang
+echo "Y" | apt-get install git
+echo "Y" | apt-get install golang
 apt-get install rpcbind
 apt-get install libnss3-tools;
 
@@ -65,6 +65,10 @@ done
 
 ########################## Burp configuration ##########################
 echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mBurp configuration\e[92m                           \n--------------------------------------------------------------\e[0m"
+firefox &
+export APP_PID=$!;
+sleep 5;
+sudo kill -SIGTERM $APP_PID;
 echo "y" | java -Djava.awt.headless=true -Xmx1g -jar /bin/burpsuite &
 export APP_PID=$!;
 sleep 25;
