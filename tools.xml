@@ -100,9 +100,6 @@
 
 
 	<osint>
-		<Rpc-check>
-			<cmd>npm install rpc-check -g;cd $PWD_START;</cmd>
-		</Rpc-check>
 	</osint>
 
 </root>
