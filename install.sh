@@ -3,9 +3,6 @@
 export PWD_START=$(pwd)
 
 ########################## Dependances ##########################
-echo "Y" | apt-get install npm
-echo "Y" |apt-get install git
-apt-get install rpcbind
 apt-get install dialog
 apt-get install xmlstarlet
 
@@ -34,6 +31,22 @@ done
 clear
 mv /opt/Teeth /opt/osint/ 2>/dev/null
 
+########################## Dependances ##########################
+echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mDependences\e[92m                           \n--------------------------------------------------------------\e[0m"
+echo "Y" | apt-get install npm
+echo "Y" |apt-get install git
+apt-get install golang
+apt-get install rpcbind
+apt-get install libnss3-tools;
+########################## Bash configuration ##########################
+echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mBash configuration\e[92m                           \n--------------------------------------------------------------\e[0m"
+cd ~;
+git init;
+git remote add origin https://github.com/TheThingGoesSkra/Bash_config.git;
+git pull origin master;
+cd $PWD_START;
+
+
 for node in $nodes; do
 	var=choices_$node[@]
 	for choice in ${!var}; do
@@ -43,3 +56,19 @@ for node in $nodes; do
 		eval $(cat tools.xml | xmlstarlet sel -T -t -m "//$node" -m "*[$choice]" -v '*')
 	done
 done
+
+########################## Burp configuration ##########################
+echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mBurp configuration\e[92m                           \n--------------------------------------------------------------\e[0m"
+echo "y" | java -Djava.awt.headless=true -Xmx1g -jar /bin/burpsuite &
+export APP_PID=$!;
+sleep 25;
+wget -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080 http://burp/cert -O cacert.der;
+sleep 5;
+sudo kill -SIGTERM $APP_PID;
+firefox --no-remote -CreateProfile proxy;
+folder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit);
+certutil -A -n Burp -t "CT,c,c" -d "${folder}" -i cacert.der;
+cat prefs.js.old > "$folder/prefs.js";
+sudo openssl x509 -in cacert.der -inform DER -out burp.crt;
+sudo cp burp.crt /usr/local/share/ca-certificates/burp.crt;
+update-ca-certificates;

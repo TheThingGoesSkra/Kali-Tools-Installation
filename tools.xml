@@ -11,11 +11,17 @@
 	</Resources>
 
 
-	<IDE>
+	<Environnement>
 		<Atom>
 			<cmd>wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -; sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list';sudo apt-get update;echo 'Y' | sudo apt-get install atom;cd $PWD_START;</cmd>
 		</Atom>
-	</IDE>
+		<Fish>
+			<cmd>echo "y" | apt-get install fish; chsh -s /usr/bin/fish; git clone https://github.com/TheThingGoesSkra/Fish_config ~/.config/fish</cmd>
+		</Fish>
+		<Terminator>
+			<cmd>echo "deb http://http.kali.org/kali kali main" >> /etc/apt/sources.list;apt-get update; echo "y" | apt-get install terminator; dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'terminator.desktop', 'firefox-esr.desktop', 'org.gnome.gedit.desktop', 'kali-msfconsole.desktop', 'kali-burpsuite.desktop', 'zenmap-root.desktop', 'cherrytree.desktop']"; git clone https://github.com/TheThingGoesSkra/Terminator_config ~/.config/terminator;</cmd>
+		</Terminator>
+	</Environnement>
 
 
 	<Windows>
@@ -43,14 +49,11 @@
 		</Pspy>
 		<linEnum>
 			<cmd>git clone https://github.com/rebootuser/LinEnum /opt/linux/linenum;cd $PWD_START;</cmd>
-		</linEnum>	
+		</linEnum>
 	</Linux>
 
 
 	<Web>
-		<Burpsuite>
-			<cmd>apt-get install libnss3-tools; echo "alias proxy='export http_proxy=\"http://127.0.0.1:8080\";export https_proxy=\"http://127.0.0.1:8080\"'" >> ~/.bashrc; echo "alias noproxy='export http_proxy=\"\";export https_proxy=\"\"'" >> ~/.bashrc; echo "y" | java -Djava.awt.headless=true -Xmx1g -jar /bin/burpsuite &amp; export APP_PID=$!; sleep 25; wget -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080 http://burp/cert -O cacert.der; sleep 5; sudo kill -SIGTERM $APP_PID; firefox --no-remote -CreateProfile proxy; folder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit); certutil -A -n Burp -t "CT,c,c" -d "${folder}" -i cacert.der; cat prefs.js.old > "$folder/prefs.js"; echo "alias fireprox='firefox -p proxy -no-remote'" >> ~/.bashrc; sudo openssl x509 -in cacert.der -inform DER -out burp.crt; sudo cp burp.crt /usr/local/share/ca-certificates/burp.crt; update-ca-certificates;cd $PWD_START;</cmd>
-		</Burpsuite>
 		<Kadimus>
 			<cmd>cd /opt/web; git clone https://github.com/P0cL4bs/Kadimus; cd Kadimus; echo "Y" | apt-get install libcurl4-openssl-dev libpcre++-dev; apt-get instibpcre++-dev; echo "Y" | apt-get install libssh-dev; make;cd $PWD_START;</cmd>
 		</Kadimus>
@@ -63,6 +66,9 @@
 		<Wall6e-Web-Scripts>
 			<cmd>git clone https://github.com/TheThingGoesSkra/Wall6e-Web-Scripts /opt/web/Wall6e-web-scripts;cd $PWD_START;</cmd>
 		</Wall6e-Web-Scripts>
+		<Ffuf>
+			<cmd>go get github.com/ffuf/ffuf;</cmd>
+		</Ffuf>
 	</Web>
 
 
