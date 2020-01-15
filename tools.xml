@@ -79,6 +79,9 @@
 		<Cisco_pwdecrypt>
 			<cmd>git clone https://github.com/axcheron/cisco_pwdecrypt /opt/cracking/cisco_pwdecrypt;cd $PWD_START;</cmd>
 		</Cisco_pwdecrypt>
+		<Pdfcrack>
+			<cmd>apt-get install pdfcrack;</cmd>
+		</Pdfcrack>
 	</Cracking>
 
 
