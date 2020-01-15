@@ -85,6 +85,9 @@
 		<Fcrackzip>
 			<cmd>apt-get install fcrackzip;</cmd>
 		</Fcrackzip>
+		<Steghide>
+			<cmd>echo "O" | apt-get install steghide;</cmd>
+		</Steghide>
 	</Cracking>
 
 
