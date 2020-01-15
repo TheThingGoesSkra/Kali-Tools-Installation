@@ -82,6 +82,9 @@
 		<Pdfcrack>
 			<cmd>apt-get install pdfcrack;</cmd>
 		</Pdfcrack>
+		<Fcrackzip>
+			<cmd>apt-get install fcrackzip;</cmd>
+		</Fcrackzip>
 	</Cracking>
 
 
