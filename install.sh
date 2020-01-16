@@ -71,7 +71,7 @@ sleep 5;
 sudo kill -SIGTERM $APP_PID;
 echo "y" | java -Djava.awt.headless=true -Xmx1g -jar /bin/burpsuite &
 export APP_PID=$!;
-sleep 25;
+sleep 30;
 wget -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080 http://burp/cert -O cacert.der;
 sleep 5;
 sudo kill -SIGTERM $APP_PID;
