@@ -82,3 +82,18 @@ cat prefs.js.old > "$folder/prefs.js";
 sudo openssl x509 -in cacert.der -inform DER -out burp.crt;
 sudo cp burp.crt /usr/local/share/ca-certificates/burp.crt;
 update-ca-certificates;
+
+
+########################## Firefox extensions ##########################
+echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mFirefox extensions\e[92m                           \n--------------------------------------------------------------\e[0m"
+wget https://addons.mozilla.org/firefox/downloads/file/3398269/max_hackbar-4.7-fx.xpi;
+wget https://addons.mozilla.org/firefox/downloads/file/3360387/http_request_maker-1.3-fx.xpi;
+wget  https://addons.mozilla.org/firefox/downloads/file/3477702/wappalyzer-5.9.0-fx.xpi;
+firefox max_hackbar-4.7-fx.xpi http_request_maker-1.3-fx.xpi wappalyzer-5.9.0-fx.xpi
+export APP_PID=$!;
+pfolder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit);
+dfolder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default' -print -quit);
+cp -r $dfolder/extensions $pfolder/extensions
+cp $dfolder/extensions.json $pfolder/extensions.json
+
+find . -type d -empty -delete
