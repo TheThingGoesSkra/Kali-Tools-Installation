@@ -71,6 +71,7 @@ for node in $nodes; do
 		then
 			########################## Firefox extensions ##########################
 			firefox *.xpi
+			rm *.xpi
 			pfolder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit);
 			dfolder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default' -print -quit);
 			cp -r $dfolder/extensions $pfolder/extensions
