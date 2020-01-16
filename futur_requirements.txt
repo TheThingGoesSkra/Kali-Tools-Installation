@@ -1,0 +1,5 @@
+ npm
+ git
+ golang
+ rpcbind
+ libnss3-tools

@@ -1,6 +1,30 @@
 <?xml version="1.0"?>
 <root>
 
+  <Configuration>
+		<Bash>
+			<cmd>cd ~;git init;git remote add origin https://github.com/TheThingGoesSkra/Bash_config.git;rm .bashrc;git pull origin master;cd $PWD_START;</cmd>
+	  </Bash>
+		<System>
+			<cmd>echo "vm.swappiness=10" >> /etc/sysctl.conf;sed -i -e 's/\(GRUB_TIMEOUT=\).*/\10/' /etc/default/grub;echo OK;</cmd>
+		</System>
+		<Fireburp>
+			<cmd>firefox --headless &amp; export APP_PID=$!;sleep 5;sudo kill -SIGTERM $APP_PID;echo "y" | java -Djava.awt.headless=true -Xmx1g -jar /bin/burpsuite &amp; export APP_PID=$!;sleep 30;wget -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080 http://burp/cert -O cacert.der;sleep 5;sudo kill -SIGTERM $APP_PID;firefox --no-remote -CreateProfile proxy;folder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit);certutil -A -n Burp -t "CT,c,c" -d "${folder}" -i cacert.der;cat prefs.js.old > "$folder/prefs.js";sudo openssl x509 -in cacert.der -inform DER -out burp.crt;sudo cp burp.crt /usr/local/share/ca-certificates/burp.crt;update-ca-certificates;</cmd>
+		</Fireburp>
+	</Configuration>
+
+  <Firefox>
+		<hackbar>
+			<cmd>wget https://addons.mozilla.org/firefox/downloads/file/3398269/max_hackbar-4.7-fx.xpi;</cmd>
+		</hackbar>
+		<http-request-maker>
+			<cmd>wget https://addons.mozilla.org/firefox/downloads/file/3360387/http_request_maker-1.3-fx.xpi;</cmd>
+		</http-request-maker>
+		<wappalyzer>
+			<cmd>wget  https://addons.mozilla.org/firefox/downloads/file/3477702/wappalyzer-5.9.0-fx.xpi;</cmd>
+		</wappalyzer>
+	</Firefox>
+
 	<Resources>
 		<SecLists>
 			<cmd>git clone https://github.com/danielmiessler/SecLists /opt/resources/seclists;cd $PWD_START;</cmd>
@@ -16,7 +40,7 @@
 			<cmd>wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -; sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list';sudo apt-get update;echo 'Y' | sudo apt-get install atom;cd $PWD_START;</cmd>
 		</Atom>
 		<Fish>
-			<cmd>echo "y" | apt-get install fish; chsh -s /usr/bin/fish; git clone https://github.com/TheThingGoesSkra/Fish_config ~/.config/fish; curl -L https://get.oh-my.fish | fish; echo "omf install agnoster" | fish;</cmd>
+			<cmd>echo "y" | apt-get install fish; chsh -s /usr/bin/fish; git clone https://github.com/TheThingGoesSkra/Fish_config ~/.config/fish; curl -L https://get.oh-my.fish | fish &amp; export APP_PID=$!;sleep 15;sudo kill -SIGTERM $APP_PID; echo "omf install agnoster" | fish &amp; export APP_PID=$!;sleep 15;sudo kill -SIGTERM $APP_PID;</cmd>
 		</Fish>
 		<Terminator>
 			<cmd>echo "deb http://http.kali.org/kali kali main" >> /etc/apt/sources.list;apt-get update; echo "y" | apt-get install terminator; dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'terminator.desktop', 'firefox-esr.desktop', 'org.gnome.gedit.desktop', 'kali-msfconsole.desktop', 'kali-burpsuite.desktop', 'zenmap-root.desktop', 'cherrytree.desktop']"; git clone https://github.com/TheThingGoesSkra/Terminator_config ~/.config/terminator;</cmd>
@@ -70,7 +94,7 @@
 			<cmd>git clone https://github.com/TheThingGoesSkra/Wall6e-Web-Scripts /opt/web/Wall6e-web-scripts;</cmd>
 		</Wall6e-Web-Scripts>
 		<Ffuf>
-			<cmd>go get github.com/ffuf/ffuf;</cmd>
+			<cmd>go get github.com/ffuf/ffuf;echo OK;</cmd>
 		</Ffuf>
 	</Web>
 
