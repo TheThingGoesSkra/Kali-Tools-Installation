@@ -73,4 +73,8 @@ dfolder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default' -print 
 cp -r $dfolder/extensions $pfolder/extensions
 cp $dfolder/extensions.json $pfolder/extensions.json
 
-find . -type d -empty -delete
+find /opt -type d -empty -delete
+
+echo "Installation terminated. Press any key in order to exit your terminal."
+read
+sudo kill -9 $PPID
