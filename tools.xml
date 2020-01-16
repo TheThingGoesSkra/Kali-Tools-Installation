@@ -89,10 +89,10 @@
 			<cmd>apt-get install fcrackzip;</cmd>
 		</Fcrackzip>
 		<Steghide>
-			<cmd>echo "O" | apt-get install steghide;</cmd>
+			<cmd>echo "Y" | apt-get install steghide;</cmd>
 		</Steghide>
 		<Hopper>
-			<cmd>curl https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-4.5.19-Linux.deb; dpkg -i Hopper-v4-4.5.19-Linux.deb; rm Hopper-v4-4.5.19-Linux.deb;</cmd>
+			<cmd>curl https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-4.5.19-Linux.deb --output Hopper-v4-4.5.19-Linux.deb; dpkg -i Hopper-v4-4.5.19-Linux.deb; rm Hopper-v4-4.5.19-Linux.deb;</cmd>
 		</Hopper>
 	</Cracking>
 
