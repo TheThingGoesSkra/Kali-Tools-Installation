@@ -58,13 +58,16 @@
 			<cmd>cd /opt/web; git clone https://github.com/P0cL4bs/Kadimus; cd Kadimus; echo "Y" | apt-get install libcurl4-openssl-dev libpcre++-dev; apt-get instibpcre++-dev; echo "Y" | apt-get install libssh-dev; make;cd $PWD_START;</cmd>
 		</Kadimus>
 		<phpBash>
-			<cmd>git clone https://github.com/Arrexel/phpbash /opt/web/phpbash;cd $PWD_START;</cmd>
+			<cmd>git clone https://github.com/Arrexel/phpbash /opt/web/phpbash;</cmd>
 		</phpBash>
 		<p0wny-shell>
-			<cmd>git clone https://github.com/flozz/p0wny-shell /opt/web/p0wny-shell;cd $PWD_START;</cmd>
+			<cmd>git clone https://github.com/flozz/p0wny-shell /opt/web/p0wny-shell;</cmd>
 		</p0wny-shell>
+		<wwwolf-php-webshell>
+			<cmd>git clone https://github.com/WhiteWinterWolf/wwwolf-php-webshell /opt/web/wwwolf-php-webshell;</cmd>
+		</wwwolf-php-webshell>
 		<Wall6e-Web-Scripts>
-			<cmd>git clone https://github.com/TheThingGoesSkra/Wall6e-Web-Scripts /opt/web/Wall6e-web-scripts;cd $PWD_START;</cmd>
+			<cmd>git clone https://github.com/TheThingGoesSkra/Wall6e-Web-Scripts /opt/web/Wall6e-web-scripts;</cmd>
 		</Wall6e-Web-Scripts>
 		<Ffuf>
 			<cmd>go get github.com/ffuf/ffuf;</cmd>
