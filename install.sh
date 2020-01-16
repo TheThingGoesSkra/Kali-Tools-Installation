@@ -65,7 +65,7 @@ done
 
 ########################## Burp configuration ##########################
 echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mBurp configuration\e[92m                           \n--------------------------------------------------------------\e[0m"
-firefox &
+firefox --headless &
 export APP_PID=$!;
 sleep 5;
 sudo kill -SIGTERM $APP_PID;
