@@ -40,7 +40,7 @@
 			<cmd>wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -; sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list';sudo apt-get update;echo 'Y' | sudo apt-get install atom;cd $PWD_START;</cmd>
 		</Atom>
 		<Fish>
-			<cmd>echo "y" | apt-get install fish; chsh -s /usr/bin/fish; git clone https://github.com/TheThingGoesSkra/Fish_config ~/.config/fish; curl -L https://get.oh-my.fish --output install; fish -c 'fish install' &amp; export APP_PID=$!;sleep 15;sudo kill -SIGTERM $APP_PID; bash -c "fish -c 'omf install agnoster'" &amp; export APP_PID=$!;sudo kill -SIGTERM $APP_PID; </cmd>
+			<cmd>echo "y" | apt-get install fish; chsh -s /usr/bin/fish; git clone https://github.com/TheThingGoesSkra/Fish_config ~/.config/fish; curl -L https://get.oh-my.fish --output install; fish -c 'fish install' &amp; export APP_PID=$!;echo $APP_PID;sleep 15;sudo kill -9 $APP_PID;cd /root/.local/share/omf;rm -rf themes;git clone https://github.com/TheThingGoesSkra/Omf_themes themes;cd $PWD_START;pkill fish;</cmd>
 		</Fish>
 		<Terminator>
 			<cmd>echo "deb http://http.kali.org/kali kali main" >> /etc/apt/sources.list;apt-get update; echo "y" | apt-get install terminator; dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'terminator.desktop', 'firefox-esr.desktop', 'org.gnome.gedit.desktop', 'kali-msfconsole.desktop', 'kali-burpsuite.desktop', 'zenmap-root.desktop', 'cherrytree.desktop']"; git clone https://github.com/TheThingGoesSkra/Terminator_config ~/.config/terminator;</cmd>
