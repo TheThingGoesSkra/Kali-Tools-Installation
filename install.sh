@@ -57,21 +57,27 @@ installRequirements futur_requirements.txt
 
 for node in $nodes; do
 	var=choices_$node[@]
+	var2=choices_$node
+	eval 'nEntries=${#'$var2'[@]}'
 	for choice in ${!var}; do
 		int=$((3*($choice-1)))
 		arrayRef=tab_${node}[1+$int]
 		echo -e "\e[92m--------------------------------------------------------------\n                         \e[0m"${!arrayRef}"\e[92m                           \n--------------------------------------------------------------\e[0m"
 		eval $(cat tools.xml | xmlstarlet sel -T -t -m "//$node" -m "*[$choice]" -v '*')
 	done
+	if [ $nEntries != 0 ] 
+	then 
+		if [ "$node" == "Firefox" ]
+		then
+			########################## Firefox extensions ##########################
+			firefox *.xpi
+			pfolder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit);
+			dfolder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default' -print -quit);
+			cp -r $dfolder/extensions $pfolder/extensions
+			cp $dfolder/extensions.json $pfolder/extensions.json
+		fi
+	fi
 done
-
-########################## Firefox extensions ##########################
-echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mFirefox extensions\e[92m                           \n--------------------------------------------------------------\e[0m"
-firefox *.xpi
-pfolder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit);
-dfolder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default' -print -quit);
-cp -r $dfolder/extensions $pfolder/extensions
-cp $dfolder/extensions.json $pfolder/extensions.json
 
 find /opt -type d -empty -delete
 
