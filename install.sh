@@ -82,8 +82,6 @@ done
 
 find /opt -type d -empty -delete
 
-#echo "Installation terminated. Press any key in order to reset your terminal."
-kill -INT $$
-#read
-#reset
+echo "Installation terminated."
+exit 0;
 
