@@ -15,7 +15,7 @@
 
 	<Environnement>
 		<Fish>
-			<cmd>echo "y" | apt-get install fish; chsh -s /usr/bin/fish; git clone https://github.com/TheThingGoesSkra/Fish_config ~/.config/fish; curl -L https://get.oh-my.fish --output install; gnome-terminal -- /bin/bash -c "fish -c 'fish install'"; export APP_PID=$!;sleep 15; pkill -SIGTERM fish; cd /root/.local/share/omf;rm -rf themes;git clone https://github.com/TheThingGoesSkra/Omf_themes themes;cd $PWD_START;</cmd>
+			<cmd>echo "y" | apt-get install fish; chsh -s /usr/bin/fish; git clone https://github.com/TheThingGoesSkra/Fish_config ~/.config/fish; curl -L https://get.oh-my.fish --output install; gnome-terminal -- /bin/bash -c "fish -c 'fish install'"; export APP_PID=$!;sleep 15; pkill -SIGTERM fish; cd /root/.local/share/omf;rm -rf themes;git clone https://github.com/TheThingGoesSkra/Omf_themes themes; ln ~/.local/share/omf/themes/agnoster/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish;cd $PWD_START;</cmd>
 		</Fish>
 		<Terminator>
 			<cmd>echo "deb http://http.kali.org/kali kali main" >> /etc/apt/sources.list;apt-get update; echo "y" | apt-get install terminator; dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'terminator.desktop', 'firefox-esr.desktop', 'org.gnome.gedit.desktop', 'kali-msfconsole.desktop', 'kali-burpsuite.desktop', 'zenmap-root.desktop', 'cherrytree.desktop']"; git clone https://github.com/TheThingGoesSkra/Terminator_config ~/.config/terminator;</cmd>
@@ -51,7 +51,7 @@
 			<cmd>git clone https://github.com/SecureAuthCorp/impacket /opt/windows/impacket;cd $PWD_START;</cmd>
 		</Impacket>
 		<Bloodhound>
-			<cmd>git clone https://github.com/adaptivethreat/Bloodhound /opt/windows/bloodhound; curl -sL https://deb.nodesource.com/setup_13.x | bash -; export APP_PID=$!; wait $APP_PID; apt-get install -y nodejs; npm install -g electron-packager; npm install -g electron-packager; cd /opt/windows/bloodhound; npm install; npm run linuxbuild; cd /opt/windows; wget https://neo4j.com/artifact.php?name=neo4j-community-3.5.12-unix.tar.gz -O neo4j-community-3.5.12-unix.tar.gz; tar -xzf neo4j-community-3.5.12-unix.tar.gz; rm neo4j-community-3.5.12-unix.tar.gz;cd $PWD_START;</cmd>
+			<cmd>git clone https://github.com/adaptivethreat/Bloodhound /opt/windows/bloodhound; curl -sL https://deb.nodesource.com/setup_13.x | bash -; export APP_PID=$!; wait $APP_PID; apt-get install -y nodejs; npm install -g electron-packager; cd /opt/windows/bloodhound; npm install; npm install; npm run linuxbuild; cd /opt/windows; wget https://neo4j.com/artifact.php?name=neo4j-community-3.5.12-unix.tar.gz -O neo4j-community-3.5.12-unix.tar.gz; tar -xzf neo4j-community-3.5.12-unix.tar.gz; rm neo4j-community-3.5.12-unix.tar.gz;cd $PWD_START;</cmd>
 		</Bloodhound>
 		<Sysinternal>
 			<cmd>cd /opt/windows; mkdir sysinternalssuite; wget https://download.sysinternals.com/files/SysinternalsSuite.zip; mv SysinternalsSuite.zip sysinternalssuite; cd sysinternalssuite; unzip SysinternalsSuite.zip;cd $PWD_START;</cmd>
