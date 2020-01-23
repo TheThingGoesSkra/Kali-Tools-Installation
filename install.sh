@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Author: TheThingGoesSkra
+
 export PWD_START=$(pwd)
 
 checkPackageIsInstalled() {
