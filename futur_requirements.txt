@@ -3,3 +3,5 @@
  golang
  rpcbind
  libnss3-tools
+ python-pip
+ cifs-utils
