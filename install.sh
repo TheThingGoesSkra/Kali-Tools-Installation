@@ -3,6 +3,7 @@
 # Author: TheThingGoesSkra
 
 export PWD_START=$(pwd)
+export VERSION=$(uname -v | egrep -o "\([^.*-]+" | cut -c2-)
 
 checkPackageIsInstalled() {
 	if [[ $(dpkg-query -W -f='${Status}' $1 2>/dev/null | grep -c "ok installed") -eq 0 ]]
@@ -34,16 +35,21 @@ else
   echo -e " ${BLUE}[*]${RESET} ${BOLD}Post-installation script for Kali Linux.${RESET}"
 fi
 
+if [[ "$VERSION" == "2020" ]]; then
+	export FILE="tools_2020.xml"
+elif [[ "$VERSION" == "2019" ]]; then
+	export FILE="tools_2019.xml"
+fi	
 
 ########################## First Dependances ##########################
 echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mFirst Dependences\e[92m                           \n--------------------------------------------------------------\e[0m"
 installRequirements first_requirements.txt
 
 
-nodes=$(xmlstarlet sel -T -t -m "//root" -m '*' -v "name()" -n tools.xml)
+nodes=$(xmlstarlet sel -T -t -m "//root" -m '*' -v "name()" -n "$FILE")
 for node in $nodes; do
 	mkdir /opt/$(echo $node | tr '[:upper:]' '[:lower:]') 2>/dev/null
-  tools=$(xmlstarlet sel -T -t -m "//$node" -m '*' -v "name()" -n tools.xml)
+  tools=$(xmlstarlet sel -T -t -m "//$node" -m '*' -v "name()" -n "$FILE")
 	eval "tab_$node=()"
 	int=1
 	for tool in $tools; do
@@ -77,7 +83,7 @@ for node in $nodes; do
 		int=$((3*($choice-1)))
 		arrayRef=tab_${node}[1+$int]
 		echo -e "\e[92m--------------------------------------------------------------\n                         \e[0m"${!arrayRef}"\e[92m                           \n--------------------------------------------------------------\e[0m"
-		eval $(cat tools.xml | xmlstarlet sel -T -t -m "//$node" -m "*[$choice]" -v '*')
+		eval $(cat "$FILE" | xmlstarlet sel -T -t -m "//$node" -m "*[$choice]" -v '*')
 	done
 	if [ $nEntries != 0 ] 
 	then 
@@ -98,4 +104,3 @@ find /opt -type d -empty -delete
 
 echo "Installation terminated."
 exit 0;
-
