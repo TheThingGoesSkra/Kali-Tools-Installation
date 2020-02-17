@@ -23,6 +23,18 @@ installRequirements() {
 	done
 }
 
+
+#-Start----------------------------------------------------------------#
+##### Check if we are running as root - else this script will fail (Hard!)
+if [[ "${EUID}" -ne 0 ]]; then
+  echo -e ' '${RED}'[!]'${RESET}" This script must be ${RED}run as root${RESET}" 1>&2
+  echo -e ' '${RED}'[!]'${RESET}" Quitting..." 1>&2
+  exit 1
+else
+  echo -e " ${BLUE}[*]${RESET} ${BOLD}Post-installation script for Kali Linux.${RESET}"
+fi
+
+
 ########################## First Dependances ##########################
 echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mFirst Dependences\e[92m                           \n--------------------------------------------------------------\e[0m"
 installRequirements first_requirements.txt
