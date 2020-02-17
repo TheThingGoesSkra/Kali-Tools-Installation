@@ -37,6 +37,7 @@ fi
 
 if [[ "$VERSION" == "2020" ]]; then
 	export FILE="tools_2020.xml"
+	mkdir /opt
 elif [[ "$VERSION" == "2019" ]]; then
 	export FILE="tools_2019.xml"
 fi	
