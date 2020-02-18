@@ -1,4 +1,4 @@
-# Kali-Tools-Installation-V2
+# Kali-Tools-Installation
 
 This script can be used in order to install all the tools below on Kali 2019 and Kali 2020.
 
