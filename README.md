@@ -58,7 +58,7 @@ And the other ones are situed in the opt directorie:
 
 ```
 
-Moreover, it setups different firefox extensions :
+Moreover, it can also setups different firefox extensions :
 
   - Hackbar
   - Http-request-maker
@@ -74,7 +74,7 @@ Thus, three aliases are configured:
 
 ```noproxie``` desactivate the proxie settings.
 
-This script can also be used in order to setup i3wm by taking advantage of my configuration with the following third parties : 
+This script can also be used in order to setup i3wm by taking advantage of my personnal configuration with the following third parties: 
 
   - I3gaps
   - I3blocks
