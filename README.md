@@ -42,6 +42,7 @@ And the other ones are situed in the opt directorie:
     ├── linux
     │   └─────── pspy
     │   └─────── linenum
+    │   └─────── linepas
     ├── web
     │   └─────── kadimus
     │   └─────── phpbash
