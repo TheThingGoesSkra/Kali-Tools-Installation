@@ -64,7 +64,7 @@ Moreover, it can also setups different firefox extensions :
   - Http-request-maker
   - Wappalyzer
 
-Finnaly, it fetch the burp certificate in order to configure the proxie in firefox via a new profile. Of course, the burp certificate is also registred in the system's certificate store to be handled by other programs. 
+It can fetch the burp certificate too in order to configure the proxie in firefox via a new profile. Of course, the burp certificate is also registred in the system's certificate store to be handled by other programs. 
 
 Thus, three aliases are configured:
 
@@ -74,7 +74,7 @@ Thus, three aliases are configured:
 
 ```noproxie``` desactivate the proxie settings.
 
-This script can also be used in order to setup i3wm by taking advantage of my personnal configuration with the following third parties: 
+Finnaly, it can also be used in order to setup i3wm by taking advantage of my personnal configuration with the following third parties: 
 
   - I3gaps
   - I3blocks
