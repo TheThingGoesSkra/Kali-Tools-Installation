@@ -65,7 +65,7 @@ Moreover, it can also setups different firefox extensions :
   - Http-request-maker
   - Wappalyzer
 
-It can fetch the burp certificate too in order to configure the proxie in firefox via a new profile. Of course, the burp certificate is also registred in the system's certificate store to be handled by other programs. 
+It can fetch the burp certificate too in order to configure the proxy in firefox via a new profile. Of course, the burp certificate is also registred in the system's certificate store to be handled by other programs. 
 
 Thus, three aliases are configured:
 
@@ -88,7 +88,7 @@ Finnaly, it can also be used in order to setup i3wm by taking advantage of my pe
   - Pureline
   - Powerline
 
-To add new tools, only the "Tools.xml" file must be modified according to the following pattern :
+To add new tools, only the "Tools_20XX.xml" file must be modified according to the following pattern :
 
 ```
 <Category>
