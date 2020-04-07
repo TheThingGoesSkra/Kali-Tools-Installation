@@ -97,6 +97,9 @@
                 <Ffuf>
                         <cmd>go get github.com/ffuf/ffuf;echo OK;</cmd>
                 </Ffuf>
+		<gobuster>
+			<cmd>go get github.com/OJ/gobuster;echo OK;</cmd>
+		</gobuster>
         </Web>
 
 
