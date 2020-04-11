@@ -91,10 +91,10 @@ for node in $nodes; do
 		if [ "$node" == "Firefox" ]
 		then
 			########################## Firefox extensions ##########################
-			firefox *.xpi
+			su -c "firefox *.xpi" $SUDO_USER
 			rm *.xpi
-			pfolder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit);
-			dfolder=$(find ~/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default' -print -quit);
+			pfolder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit);
+			dfolder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default-esr' -print -quit);
 			cp -r $dfolder/extensions $pfolder/extensions
 			cp $dfolder/extensions.json $pfolder/extensions.json
 		fi

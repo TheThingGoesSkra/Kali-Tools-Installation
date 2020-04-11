@@ -12,7 +12,7 @@
                         <cmd>echo "vm.swappiness=10" >> /etc/sysctl.conf;sed -i -e 's/\(GRUB_TIMEOUT=\).*/\10/' /etc/default/grub;echo OK;</cmd>
                 </System>
                 <Fireburp>
-                        <cmd>echo 'y' | java -Djava.awt.headless=true -Xmx1g -jar /bin/burpsuite &amp; export APP_PID=$!; sleep 35;wget -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080 http://burp/cert -O cacert.der;sleep 5;sudo kill -SIGTERM $APP_PID;su -c "firefox --no-remote -CreateProfile proxy;" $SUDO_USER;folder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit);su -c "certutil -A -n Burp -t "CT,c,c" -d "${folder}" -i cacert.der;" $SUDO_USER;cat prefs.js.old > "$folder/prefs.js";sudo openssl x509 -in cacert.der -inform DER -out burp.crt;sudo cp burp.crt /usr/local/share/ca-certificates/burp.crt;update-ca-certificates;cd $PWD_START;</cmd>
+                        <cmd>echo 'y' | java -Djava.awt.headless=true -Xmx1g -jar /bin/burpsuite &amp; export APP_PID=$!; sleep 35;wget -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080 http://burp/cert -O cacert.der;sleep 5;sudo kill -SIGTERM $APP_PID;su -c "firefox --no-remote -CreateProfile roxy;" $SUDO_USER;folder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.roxy' -print -quit);certutil -A -n Burp -t "CT,c,c" -d "${folder}" -i cacert.der; cat prefs.js.old > "$folder/prefs.js";sudo openssl x509 -in cacert.der -inform DER -out burp.crt;sudo cp burp.crt /usr/local/share/ca-certificates/burp.crt;update-ca-certificates;cd $PWD_START;</cmd>
                 </Fireburp>
         </Configuration>
 
@@ -30,13 +30,13 @@
 
   <Firefox>
                 <hackbar>
-                        <cmd>su -c "wget https://addons.mozilla.org/firefox/downloads/file/3398269/max_hackbar-4.7-fx.xpi;" $SUDO_USER</cmd>
+                        <cmd>wget https://addons.mozilla.org/firefox/downloads/file/3398269/max_hackbar-4.7-fx.xpi;</cmd>
                 </hackbar>
                 <http-request-maker>
-                        <cmd>su -c "wget https://addons.mozilla.org/firefox/downloads/file/3360387/http_request_maker-1.3-fx.xpi;" $SUDO_USER</cmd>
+                        <cmd>wget https://addons.mozilla.org/firefox/downloads/file/3360387/http_request_maker-1.3-fx.xpi;</cmd>
                 </http-request-maker>
                 <wappalyzer>
-                        <cmd>su -c "wget  https://addons.mozilla.org/firefox/downloads/file/3477702/wappalyzer-5.9.0-fx.xpi;" $SUDO_USER</cmd>
+                        <cmd>wget  https://addons.mozilla.org/firefox/downloads/file/3477702/wappalyzer-5.9.0-fx.xpi;</cmd>
                 </wappalyzer>
         </Firefox>
 
