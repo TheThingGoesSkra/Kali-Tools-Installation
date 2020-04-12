@@ -5,3 +5,4 @@
  libnss3-tools
  python-pip
  cifs-utils
+ xfce4-terminal
