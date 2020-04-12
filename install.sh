@@ -44,6 +44,13 @@ fi
 
 ########################## First Dependances ##########################
 echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mFirst Dependences\e[92m                           \n--------------------------------------------------------------\e[0m"
+
+# Fix repositories
+mv /etc/apt/sources.list /etc/apt/sources.list.old
+cat /etc/apt/sources.list.old | head -n 14 > /etc/apt/sources.list
+printf '\ndeb http://http.kali.org/kali kali-rolling main non-free contrib\ndeb-src http://http.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
+
+apt update
 installRequirements first_requirements.txt
 
 

@@ -32,19 +32,22 @@
         </Environnement>
 
   <Firefox>
-                <hackbar>
+                <Hackbar>
                         <cmd>wget https://addons.mozilla.org/firefox/downloads/file/3398269/max_hackbar-4.7-fx.xpi;</cmd>
-                </hackbar>
-                <http-request-maker>
+		</Hackbar>
+		<ModHeader>
+			<cmd>wget https://addons.mozilla.org/firefox/downloads/file/3546665/modheader-3.0.0-an+fx.xpi;</cmd>
+		</ModHeader>
+                <Http-request-maker>
                         <cmd>wget https://addons.mozilla.org/firefox/downloads/file/3360387/http_request_maker-1.3-fx.xpi;</cmd>
-		</http-request-maker>
+		</Http-request-maker>
 
-                <wappalyzer>
+                <Wappalyzer>
                         <cmd>wget https://addons.mozilla.org/firefox/downloads/file/3477702/wappalyzer-5.9.0-fx.xpi;</cmd>
-		</wappalyzer>
-		<foxyproxy>
+		</Wappalyzer>
+		<Foxyproxy>
 			<cmd>wget https://addons.mozilla.org/firefox/downloads/file/3476518/foxyproxy_standard-7.4.3-an+fx.xpi;</cmd>
-		</foxyproxy>
+		</Foxyproxy>
 
         </Firefox>
 
