@@ -76,13 +76,13 @@ for node in $nodes; do
 	fi
 done
 
-#clear
+clear
 mv /opt/Teeth /opt/osint/ 2>/dev/null
 
 ########################## Futur Dependances ##########################
 echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mFutur Dependences\e[92m                           \n--------------------------------------------------------------\e[0m"
 installRequirements futur_requirements.txt
-wget https://bootstrap.pypa.io/get-pip.py
+wget https://bootstrap.pypa.io/get-pip.py -O get-pip.py
 python get-pip.py
 
 for node in $nodes; do
