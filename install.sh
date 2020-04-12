@@ -46,9 +46,9 @@ fi
 echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mFirst Dependences\e[92m                           \n--------------------------------------------------------------\e[0m"
 
 # Fix repositories
-mv /etc/apt/sources.list /etc/apt/sources.list.old
-cat /etc/apt/sources.list.old | head -n 14 > /etc/apt/sources.list
-printf '\ndeb http://http.kali.org/kali kali-rolling main non-free contrib\ndeb-src http://http.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
+#mv /etc/apt/sources.list /etc/apt/sources.list.old
+#cat /etc/apt/sources.list.old | head -n 14 > /etc/apt/sources.list
+#printf '\ndeb http://http.kali.org/kali kali-rolling main non-free contrib\ndeb-src http://http.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
 
 apt update
 installRequirements first_requirements.txt
@@ -76,12 +76,14 @@ for node in $nodes; do
 	fi
 done
 
-clear
+#clear
 mv /opt/Teeth /opt/osint/ 2>/dev/null
 
 ########################## Futur Dependances ##########################
 echo -e "\e[92m--------------------------------------------------------------\n                         \e[0mFutur Dependences\e[92m                           \n--------------------------------------------------------------\e[0m"
 installRequirements futur_requirements.txt
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
 
 for node in $nodes; do
 	var=choices_$node[@]

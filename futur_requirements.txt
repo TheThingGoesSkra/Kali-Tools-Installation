@@ -2,7 +2,7 @@
  git
  golang
  rpcbind
+ python3-pip
  libnss3-tools
- python-pip
  cifs-utils
  xfce4-terminal
