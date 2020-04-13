@@ -28,7 +28,10 @@
                 </Terminator>
                 <Atom>
                         <cmd>wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -; sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list';sudo apt-get update;echo 'Y' | sudo apt-get install atom;cd $PWD_START;</cmd>
-                </Atom>
+		</Atom>
+		<Cron-Auto-Push>
+			<cmd>git clone https://github.com/tejvuligonda/Cron-Auto-Push /home/$SUDO_USER;cd $PWD_START;</cmd>
+		</Cron-Auto-Push>
         </Environnement>
 
   <Firefox>
