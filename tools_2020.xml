@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root>
 <!-- Author: TheThingGoesSkra -->
-  <Configuration>
+   <Environnement>
                 <System-Hardening>
                         <cmd>echo "vm.swappiness=10" >> /etc/sysctl.conf;sed -i -e 's/\(GRUB_TIMEOUT=\).*/\10/' /etc/default/grub;echo OK;</cmd>
                 </System-Hardening>
@@ -12,14 +12,14 @@
 			<cmd>su -c "firefox --headless &amp;" $SUDO_USER;sleep 5;pkill firefox;echo 'y' | su -c "java -Djava.awt.headless=true -Xmx1g -jar /bin/burpsuite" $SUDO_USER &amp; sleep 35;wget -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080 http://burp/cert -O cacert.der;sleep 5;sudo pkill java;su -c "firefox --no-remote -CreateProfile roxy;" $SUDO_USER;folder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.roxy' -print -quit);certutil -A -n Burp -t "CT,c,c" -d "${folder}" -i cacert.der; cat prefs.js.old > "$folder/prefs.js";chown -R $SUDO_USER:$SUDO_USER $folder; folder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default-esr' -print -quit); certutil -A -n Burp -t "CT,c,c" -d "${folder}" -i cacert.der;chown -R $SUDO_USER:$SUDO_USER $folder; folder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default-release' -print -quit); certutil -A -n Burp -t "CT,c,c" -d "${folder}" -i cacert.der;chown -R $SUDO_USER:$SUDO_USER $folder; sudo openssl x509 -in cacert.der -inform DER -out burp.crt;sudo cp burp.crt /usr/local/share/ca-certificates/burp.crt;update-ca-certificates;cd $PWD_START;</cmd>
                 </Fireburp>
                 <I3-I3gaps-I3Blocks-Compton-Feh-Rofi-Morc-Wtf-Mc>
-                        <cmd>apt-get install -y i3 i3blocks lxappearance libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-shape0-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev build-essential autoconf pkg-config;mkdir /home/$SUDO_USER/GUI;cd /home/$SUDO_USER/GUI;git clone https://www.github.com/Airblader/i3 i3-gaps; cd i3-gaps;autoreconf --force --install;rm -rf build;mkdir -p build; cd build;../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers;make -j8;make install; apt-get install feh compton mc rofi; cd /home/$SUDO_USER/.config; rm -rf i3; git clone http://github.com/thethinggoesskra/i3_config i3;chmod a+x i3/script.sh;git clone http://github.com/thethinggoesskra/i3blocks_config i3blocks; rm -rf gtk-3.0; git clone http://github.com/thethinggoesskra/gtk3_theme gtk-3.0; git clone https://github.com/TheThingGoesSkra/wtf_config wtf; git clone https://github.com/TheThingGoesSkra/rofi_config rofi; cd /home/$SUDO_USER/GUI; git clone http://github.com/thethinggoesskra/Wallpapers; git clone https://github.com/Boruch-Baum/morc_menu.git;cd morc_menu;sudo make install;cd /home/$SUDO_USER/GUI;wget https://github.com/wtfutil/wtf/releases/download/v0.25.0/wtf_0.25.0_linux_386.tar.gz;tar xvzf wtf_0.25.0_linux_386.tar.gz;rm wtf_0.25.0_linux_386.tar.gz;cd /home/$SUDO_USER/GUI/wtf_0.25.0_linux_386/;chmod a+x /home/$SUDO_USER/GUI/wtf_0.25.0_linux_386/wtfutil;cp /home/$SUDO_USER/GUI/wtf_0.25.0_linux_386/wtfutil /usr/local/bin;cd $PWD_START;</cmd>
+                        <cmd>apt-get install -y i3 i3blocks lxappearance libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-shape0-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev build-essential autoconf pkg-config;mkdir /home/$SUDO_USER/GUI;cd /home/$SUDO_USER/GUI;git clone https://www.github.com/Airblader/i3 i3-gaps; cd i3-gaps;autoreconf --force --install;rm -rf build;mkdir -p build; cd build;../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers;make -j8;make install; yes | apt-get install feh compton mc rofi; cd /home/$SUDO_USER/.config; rm -rf i3; git clone http://github.com/thethinggoesskra/i3_config i3;chmod a+x i3/script.sh;git clone http://github.com/thethinggoesskra/i3blocks_config i3blocks; rm -rf gtk-3.0; git clone http://github.com/thethinggoesskra/gtk3_theme gtk-3.0; git clone https://github.com/TheThingGoesSkra/wtf_config wtf; git clone https://github.com/TheThingGoesSkra/rofi_config rofi; cd /home/$SUDO_USER/GUI; git clone http://github.com/thethinggoesskra/Wallpapers; git clone https://github.com/Boruch-Baum/morc_menu.git;cd morc_menu;sudo make install;cd /home/$SUDO_USER/GUI;wget https://github.com/wtfutil/wtf/releases/download/v0.25.0/wtf_0.25.0_linux_386.tar.gz;tar xvzf wtf_0.25.0_linux_386.tar.gz;rm wtf_0.25.0_linux_386.tar.gz;cd /home/$SUDO_USER/GUI/wtf_0.25.0_linux_386/;chmod a+x /home/$SUDO_USER/GUI/wtf_0.25.0_linux_386/wtfutil;cp /home/$SUDO_USER/GUI/wtf_0.25.0_linux_386/wtfutil /usr/local/bin;cd $PWD_START;</cmd>
                 </I3-I3gaps-I3Blocks-Compton-Feh-Rofi-Morc-Wtf-Mc>
                 <Bashrc-Pureline-Powerline>
-                        <cmd>cd /home/$SUDO_USER;rm .bashrc;git init;git remote add origin https://github.com/TheThingGoesSkra/Bash_config.git;git pull origin master;mkdir /home/$SUDO_USER/.font;cd /home/$SUDO_USER/.font;wget https://github.com/supermarin/YosemiteSanFranciscoFont/blob/master/System%20San%20Francisco%20Display%20Regular.ttf?raw=true -O /home/$SUDO_USER/.font/System\ San\ Francisco\ Display\ Regular.ttf;pip install powerline-status;mkdir /home/$SUDO_USER/.local/share/fonts;cd /home/$SUDO_USER/.local/share/fonts;wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf;fc-cache -vf /home/$SUDO_USER/.local/share/fonts/;mkdir /home/$SUDO_USER/.config/fontconfig;mkdir /home/$SUDO_USER/.config/fontconfig/conf.d; apt-get install vim-gtk;export TERM=”screen-256color”;git clone https://github.com/thethinggoesskra/vim_config /home/$SUDO_USER/.vim;cd $PWD_START;</cmd>
+                        <cmd>cd /home/$SUDO_USER;rm .bashrc;git init;git remote add origin https://github.com/TheThingGoesSkra/Bash_config.git;git pull origin master;mkdir /home/$SUDO_USER/.font;cd /home/$SUDO_USER/.font;wget https://github.com/supermarin/YosemiteSanFranciscoFont/blob/master/System%20San%20Francisco%20Display%20Regular.ttf?raw=true -O /home/$SUDO_USER/.font/System\ San\ Francisco\ Display\ Regular.ttf;pip install powerline-status;mkdir /home/$SUDO_USER/.local/share/fonts;cd /home/$SUDO_USER/.local/share/fonts;wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf;fc-cache -vf /home/$SUDO_USER/.local/share/fonts/;mkdir /home/$SUDO_USER/.config/fontconfig;mkdir /home/$SUDO_USER/.config/fontconfig/conf.d; echo "Y" | apt-get install vim-gtk;export TERM=”screen-256color”;git clone https://github.com/thethinggoesskra/vim_config /home/$SUDO_USER/.vim;cd $PWD_START;</cmd>
                 </Bashrc-Pureline-Powerline>
-        </Configuration>
-
-        <Environnement>
+        	<Smb-Ftp-Tftp-Http>
+        		<cmd>echo "y" | apt-get install vsftpd;echo "y" | apt-get install atftpd;echo "y" | apt-get install samba;echo "y" | apt-get install apache2;echo "y" | apt-get install openssh-server;echo "y" | apt-get install ssh;mv /etc/vsftpd.conf /etc/vsftpd.conf.old;mv /etc/default/atftpd /etc/default/atftpd.old;mv /etc/samba/smb.conf /etc/samba/smb.conf.old;mv /etc/apache2/apache2.conf /etc/apache2/apache2.conf.old;mkdir -p /srv/ftp/root;touch /srv/ftp/banner;touch /srv/ftp/root/test;chmod -R 755 /srv/ftp/root;mkdir -p /srv/tftp/root;touch /srv/tftp/root/test;chmod -R 755 /srv/tftp/root;mkdir -p /srv/smb/root;touch /srv/smb/root/test;chmod -R 755 /srv/smb/root;mkdir -p /srv/http/root;touch /srv/http/root/test;chmod -R 755 /srv/http/root;chown -R $SUDO_USER:$SUDO_USER /srv; chown -R ftp:ftp /srv/ftp/;chown -R nobody:nogroup /srv/smb/;chmod -R 555 /srv/ftp/;chmod -R 555 /srv/tftp/;chmod -R 555 /srv/smb/;chmod -R 555 /srv/http/;rm -rf /etc/samba; git clone https://github.com/TheThingGoesSkra/Smb_Config /etc/samba;rm -rf /etc/apache2;git clone https://github.com/TheThingGoesSkra/Apache2_Config /etc/apache2;rm /etc/vsftpd.conf; wget https://github.com/TheThingGoesSkra/Vsftpd_Config/raw/master/vsftpd.conf -O /etc/vsftpd.conf;rm /etc/default/atftpd;wget https://github.com/TheThingGoesSkra/Atftpd_Config/raw/master/atftpd -O /etc/default/atftpd;</cmd>
+        	</Smb-Ftp-Tftp-Http>
                 <Fish>
                         <cmd>echo "y" | apt-get install fish; su -c "chsh -s /usr/bin/fish" $SUDO_USER; git clone https://github.com/TheThingGoesSkra/Fish_config /home/$SUDO_USER/.config/fish; sudo chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config/fish; curl -L https://get.oh-my.fish --output install; su -c "xfce4-terminal -e \"fish -c 'fish install'\"" $SUDO_USER;export APP_PID=$!;sleep 15; pkill -SIGTERM fish; cd /home/$SUDO_USER/.local/share/omf;rm -rf themes;git clone https://github.com/TheThingGoesSkra/Omf_themes themes; ln /home/$SUDO_USER/.local/share/omf/themes/agnoster/fish_prompt.fish /home/$SUDO_USER/.config/fish/functions/fish_prompt.fish;cd $PWD_START;</cmd>
                 </Fish>
@@ -59,23 +59,48 @@
                         <cmd>git clone https://github.com/fabrimagic72/malware-samples /opt/resources/malwares;cd $PWD_START;</cmd>
                 </Malwares-samples>
         </Resources>
-
+        <Kit>
+                <windows>
+                	<cmd>git clone https://github.com/phackt/pentest /opt/kit; cp -r /opt/kit/privesc/windows /opt/kit/windows;rm -rf /opt/pentest;</cmd>
+                </windows>
+        </Kit>
         <Windows>
                 <Impacket>
-                        <cmd>git clone https://github.com/SecureAuthCorp/impacket /opt/windows/impacket;cd $PWD_START;</cmd>
+                        <cmd>git clone https://github.com/SecureAuthCorp/impacket /opt/windows/impacket;pip install -r /opt/windows/impacket/requirements.txt;cd $PWD_START;</cmd>
                 </Impacket>
+                <windapsearch>
+                	<cmd>git clone https://github.com/ropnop/windapsearch /opt/windows/windapsearch; pip install -r /opt/windows/windapsearch/requirements.txt;</cmd>
+                </windapsearch>
+                <jxplorer>
+                	<cmd>echo "y" | apt get install jxplorer;</cmd>
+                </jxplorer>
+                <SimpleBITSServer>
+                	<cmd>git clone https://github.com/SafeBreach-Labs/SimpleBITSServer /opt/windows;</cmd>
+                </SimpleBITSServer>
+                <CrackMapExec-PowerSploit>
+                	<cmd>pip install --user pipenv;git clone --recursive https://github.com/byt3bl33d3r/CrackMapExec /opt/windows/;cd /opt/windows/CrackMapExec;pip install -r requirements.txt;pipenv install; pipenv shell; python setup.py install;cd ..; ln -s CrackMapExec/build/lib.linux-x86_64-2.7/cme/data/powersploit/ PowerSploit;cd $PWD_START;</cmd>
+                </CrackMapExec-Powerview>
                 <Bloodhound>
                         <cmd>git clone https://github.com/adaptivethreat/Bloodhound /opt/windows/bloodhound; curl -sL https://deb.nodesource.com/setup_13.x | bash -; export APP_PID=$!; wait $APP_PID; apt-get install -y nodejs; npm install -g electron-packager; cd /opt/windows/bloodhound; npm install; npm install; npm run linuxbuild; cd /opt/windows; wget https://neo4j.com/artifact.php?name=neo4j-community-3.5.12-unix.tar.gz -O neo4j-community-3.5.12-unix.tar.gz; tar -xzf neo4j-community-3.5.12-unix.tar.gz; rm neo4j-community-3.5.12-unix.tar.gz;cd $PWD_START;</cmd>
                 </Bloodhound>
+                <Bloodhound-Python>
+                	<cmd>pip install bloodhound-python;</cmd>
+                </Bloodhound-Python>
                 <Sysinternal>
                         <cmd>cd /opt/windows; mkdir sysinternalssuite; wget https://download.sysinternals.com/files/SysinternalsSuite.zip; mv SysinternalsSuite.zip sysinternalssuite; cd sysinternalssuite; unzip SysinternalsSuite.zip;cd $PWD_START;</cmd>
                 </Sysinternal>
                 <MremoteNG-Decrypt>
                         <cmd>cd /opt/windows; git clone https://github.com/haseebT/mRemoteNG-Decrypt mremoteng-decrypt; cd mremoteng-decrypt; pip install pyinstaller; pyinstaller mremoteng_decrypt.py; pip install pycryptodome; pip install pycryptodomex;cd $PWD_START;</cmd>
                 </MremoteNG-Decrypt>
+                <VncPassword>
+                	<cmd>git clone https://github.com/trinitronx/vncpasswd.py /opt/windows/vncpassword;</cmd>
+                </VncPassword>
                 <Evil-Winrm>
                         <cmd>gem install evil-winrm;cd $PWD_START;</cmd>
                 </Evil-Winrm>
+                <Nc.exe>
+                	<cmd>git clone https://github.com/int0x33/nc.exe /opt/windows/nc;</cmd>
+                </Nc.exe>
         </Windows>
 
 
@@ -84,14 +109,17 @@
                         <cmd>cd /opt/linux; mkdir pspy; cd pspy; wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64; wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32;cd $PWD_START;</cmd>
                 </Pspy>
                 <linEnum>
-                        <cmd>git clone https://github.com/rebootuser/LinEnum /opt/linux/linenum;cd $PWD_START;</cmd>
+                        <cmd>git clone https://github.com/rebootuser/LinEnum /opt/linux/linenum;</cmd>
                 </linEnum>
+                 <lse>
+                        <cmd>git clone https://github.com/diego-treitos/linux-smart-enumeration /opt/linux/lse;</cmd>
+                </lse>
         </Linux>
 
 
         <Web>
                 <Kadimus>
-                        <cmd>cd /opt/web; git clone https://github.com/P0cL4bs/Kadimus; cd Kadimus; echo "Y" | apt-get install libcurl4-openssl-dev libpcre++-dev; apt-get instibpcre++-dev; echo "Y" | apt-get install libssh-dev; make;cd $PWD_START;</cmd>
+                        <cmd>cd /opt/web; git clone https://github.com/P0cL4bs/Kadimus; cd Kadimus; echo "Y" | apt-get install libcurl4-openssl-dev libpcre++-dev;  echo "Y" | apt-get instibpcre++-dev; echo "Y" | apt-get install libssh-dev; make;cd $PWD_START;</cmd>
                 </Kadimus>
                 <phpBash>
                         <cmd>git clone https://github.com/Arrexel/phpbash /opt/web/phpbash;</cmd>

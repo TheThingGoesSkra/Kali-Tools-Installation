@@ -76,7 +76,7 @@ for node in $nodes; do
 	fi
 done
 
-clear
+#clear
 mv /opt/Teeth /opt/osint/ 2>/dev/null
 
 ########################## Futur Dependances ##########################

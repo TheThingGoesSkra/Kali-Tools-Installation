@@ -6,3 +6,12 @@
  libnss3-tools
  cifs-utils
  xfce4-terminal
+ python-dev 
+ libldap2-dev 
+ libsasl2-dev 
+ libssl-dev
+ metasploit-framework
+ pipenv
+ libffi-dev 
+ python-dev 
+ build-essential
