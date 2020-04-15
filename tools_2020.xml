@@ -5,6 +5,9 @@
                 <System-Hardening>
                         <cmd>echo "vm.swappiness=10" >> /etc/sysctl.conf;sed -i -e 's/\(GRUB_TIMEOUT=\).*/\10/' /etc/default/grub;echo OK;</cmd>
                 </System-Hardening>
+                <Smb-Ftp-Tftp-Http>
+        		<cmd>echo "y" | apt-get install vsftpd;echo "y" | apt-get install atftpd;echo "y" | apt-get install samba;echo "y" | apt-get install apache2;echo "y" | apt-get install openssh-server;echo "y" | apt-get install ssh;mv /etc/vsftpd.conf /etc/vsftpd.conf.old;mv /etc/default/atftpd /etc/default/atftpd.old;mv /etc/samba/smb.conf /etc/samba/smb.conf.old;mv /etc/apache2/apache2.conf /etc/apache2/apache2.conf.old;mkdir -p /srv/ftp/root;touch /srv/ftp/banner;touch /srv/ftp/root/test;chmod -R 755 /srv/ftp/root;mkdir -p /srv/tftp/root;touch /srv/tftp/root/test;chmod -R 755 /srv/tftp/root;mkdir -p /srv/smb/root;touch /srv/smb/root/test;chmod -R 755 /srv/smb/root;mkdir -p /srv/http/root;touch /srv/http/root/test;chmod -R 755 /srv/http/root;chown -R $SUDO_USER:$SUDO_USER /srv; chown -R ftp:ftp /srv/ftp/;chown -R nobody:nogroup /srv/smb/;chmod -R 555 /srv/ftp/;chmod -R 555 /srv/tftp/;chmod -R 555 /srv/smb/;chmod -R 555 /srv/http/;rm -rf /etc/samba; git clone https://github.com/TheThingGoesSkra/Smb_Config /etc/samba;rm -rf /etc/apache2;git clone https://github.com/TheThingGoesSkra/Apache2_Config /etc/apache2;rm /etc/vsftpd.conf; wget https://github.com/TheThingGoesSkra/Vsftpd_Config/raw/master/vsftpd.conf -O /etc/vsftpd.conf;rm /etc/default/atftpd;wget https://github.com/TheThingGoesSkra/Atftpd_Config/raw/master/atftpd -O /etc/default/atftpd;</cmd>
+        	</Smb-Ftp-Tftp-Http>
                 <Last-Firefox-Release>
                 	<cmd>wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&amp;os=linux64&amp;lang=en-US";tar xvjf firefox.tar.bz2;rm firefox.tar.bz2; mv firefox /usr/lib; rm /bin/firefox; ln -s /usr/lib/firefox/firefox /usr/bin/firefox;printf '[Desktop Entry]\nName=Firefox\nEncoding=UTF-8\nExec=sh -c "/bin/firefox"\nIcon=/usr/lib/firefox/browser/chrome/icons/default/default128.png\nStartupNotify=false\nTerminal=false\nType=Application'>/usr/share/applications/firefox.desktop;su -c "xdg-settings set default-web-browser firefox.desktop;i" $SUDO_USER;</cmd>
                 </Last-Firefox-Release>
@@ -17,9 +20,6 @@
                 <Bashrc-Pureline-Powerline>
                         <cmd>cd /home/$SUDO_USER;rm .bashrc;git init;git remote add origin https://github.com/TheThingGoesSkra/Bash_config.git;git pull origin master;mkdir /home/$SUDO_USER/.font;cd /home/$SUDO_USER/.font;wget https://github.com/supermarin/YosemiteSanFranciscoFont/blob/master/System%20San%20Francisco%20Display%20Regular.ttf?raw=true -O /home/$SUDO_USER/.font/System\ San\ Francisco\ Display\ Regular.ttf;pip install powerline-status;mkdir /home/$SUDO_USER/.local/share/fonts;cd /home/$SUDO_USER/.local/share/fonts;wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf;fc-cache -vf /home/$SUDO_USER/.local/share/fonts/;mkdir /home/$SUDO_USER/.config/fontconfig;mkdir /home/$SUDO_USER/.config/fontconfig/conf.d; echo "Y" | apt-get install vim-gtk;export TERM=”screen-256color”;git clone https://github.com/thethinggoesskra/vim_config /home/$SUDO_USER/.vim;cd $PWD_START;</cmd>
                 </Bashrc-Pureline-Powerline>
-        	<Smb-Ftp-Tftp-Http>
-        		<cmd>echo "y" | apt-get install vsftpd;echo "y" | apt-get install atftpd;echo "y" | apt-get install samba;echo "y" | apt-get install apache2;echo "y" | apt-get install openssh-server;echo "y" | apt-get install ssh;mv /etc/vsftpd.conf /etc/vsftpd.conf.old;mv /etc/default/atftpd /etc/default/atftpd.old;mv /etc/samba/smb.conf /etc/samba/smb.conf.old;mv /etc/apache2/apache2.conf /etc/apache2/apache2.conf.old;mkdir -p /srv/ftp/root;touch /srv/ftp/banner;touch /srv/ftp/root/test;chmod -R 755 /srv/ftp/root;mkdir -p /srv/tftp/root;touch /srv/tftp/root/test;chmod -R 755 /srv/tftp/root;mkdir -p /srv/smb/root;touch /srv/smb/root/test;chmod -R 755 /srv/smb/root;mkdir -p /srv/http/root;touch /srv/http/root/test;chmod -R 755 /srv/http/root;chown -R $SUDO_USER:$SUDO_USER /srv; chown -R ftp:ftp /srv/ftp/;chown -R nobody:nogroup /srv/smb/;chmod -R 555 /srv/ftp/;chmod -R 555 /srv/tftp/;chmod -R 555 /srv/smb/;chmod -R 555 /srv/http/;rm -rf /etc/samba; git clone https://github.com/TheThingGoesSkra/Smb_Config /etc/samba;rm -rf /etc/apache2;git clone https://github.com/TheThingGoesSkra/Apache2_Config /etc/apache2;rm /etc/vsftpd.conf; wget https://github.com/TheThingGoesSkra/Vsftpd_Config/raw/master/vsftpd.conf -O /etc/vsftpd.conf;rm /etc/default/atftpd;wget https://github.com/TheThingGoesSkra/Atftpd_Config/raw/master/atftpd -O /etc/default/atftpd;</cmd>
-        	</Smb-Ftp-Tftp-Http>
                 <Fish>
                         <cmd>echo "y" | apt-get install fish; su -c "chsh -s /usr/bin/fish" $SUDO_USER; git clone https://github.com/TheThingGoesSkra/Fish_config /home/$SUDO_USER/.config/fish; sudo chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config/fish; curl -L https://get.oh-my.fish --output install; su -c "xfce4-terminal -e \"fish -c 'fish install'\"" $SUDO_USER;export APP_PID=$!;sleep 15; pkill -SIGTERM fish; cd /home/$SUDO_USER/.local/share/omf;rm -rf themes;git clone https://github.com/TheThingGoesSkra/Omf_themes themes; ln /home/$SUDO_USER/.local/share/omf/themes/agnoster/fish_prompt.fish /home/$SUDO_USER/.config/fish/functions/fish_prompt.fish;cd $PWD_START;</cmd>
                 </Fish>
@@ -30,7 +30,7 @@
                         <cmd>wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -; sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list';sudo apt-get update;echo 'Y' | sudo apt-get install atom;cd $PWD_START;</cmd>
 		</Atom>
 		<SublimeText>
-			<cmd>wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -;apt-get install -y apt-transport-https;echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list;apt-get update;apt-get install sublime-text;</cmd>
+			<cmd>wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -;apt-get install -y apt-transport-https;echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list;apt-get update;apt-get install sublime-text;mv /opt/sublime-text /opt/environnement/sublime-text;printf '#!/bin/sh\nexec /opt/environnement/sublime_text/sublime_text --fwdargv0 "$0" "$@"' > /usr/bin/subl;</cmd>
 		</SublimeText>
 		<PyCharm>
 			<cmd>wget https://download.jetbrains.com/python/pycharm-community-2020.1.tar.gz;</cmd>
@@ -41,8 +41,8 @@
         </Environnement>
 
   <Firefox>
-                <Hackbar>
-                        <cmd>wget https://addons.mozilla.org/firefox/downloads/file/3398269/max_hackbar-4.7-fx.xpi;</cmd>
+        <Hackbar>
+            <cmd>wget https://addons.mozilla.org/firefox/downloads/file/3398269/max_hackbar-4.7-fx.xpi;</cmd>
 		</Hackbar>
 		<ModHeader>
 			<cmd>wget https://addons.mozilla.org/firefox/downloads/file/3546665/modheader-3.0.0-an+fx.xpi;</cmd>
@@ -57,7 +57,6 @@
 		<Foxyproxy>
 			<cmd>wget https://addons.mozilla.org/firefox/downloads/file/3476518/foxyproxy_standard-7.4.3-an+fx.xpi;</cmd>
 		</Foxyproxy>
-
         </Firefox>
 
         <Resources>
@@ -87,8 +86,8 @@
                 	<cmd>git clone https://github.com/SafeBreach-Labs/SimpleBITSServer /opt/windows;</cmd>
                 </SimpleBITSServer>
                 <CrackMapExec-PowerSploit>
-                	<cmd>pip install --user pipenv;git clone --recursive https://github.com/byt3bl33d3r/CrackMapExec /opt/windows/;cd /opt/windows/CrackMapExec;pip install -r requirements.txt;pipenv install; pipenv shell; python setup.py install;cd ..; ln -s CrackMapExec/build/lib.linux-x86_64-2.7/cme/data/powersploit/ PowerSploit;cd $PWD_START;</cmd>
-                </CrackMapExec-Powerview>
+                	<cmd>pip install --user pipenv;git clone --recursive https://github.com/byt3bl33d3r/CrackMapExec /opt/windows/CrackMapExec;cd /opt/windows/CrackMapExec;pip install -r requirements.txt;pipenv install; pipenv shell; python setup.py install;ln -s CrackMapExec/build/lib.linux-x86_64-2.7/cme/data/powersploit/ /opt/windows/PowerSploit;cd $PWD_START;</cmd>
+                </CrackMapExec-PowerSploit>
                 <Bloodhound>
                         <cmd>git clone https://github.com/adaptivethreat/Bloodhound /opt/windows/bloodhound; curl -sL https://deb.nodesource.com/setup_13.x | bash -; export APP_PID=$!; wait $APP_PID; apt-get install -y nodejs; npm install -g electron-packager; cd /opt/windows/bloodhound; npm install; npm install; npm run linuxbuild; cd /opt/windows; wget https://neo4j.com/artifact.php?name=neo4j-community-3.5.12-unix.tar.gz -O neo4j-community-3.5.12-unix.tar.gz; tar -xzf neo4j-community-3.5.12-unix.tar.gz; rm neo4j-community-3.5.12-unix.tar.gz;cd $PWD_START;</cmd>
                 </Bloodhound>
@@ -98,12 +97,6 @@
                 <Sysinternal>
                         <cmd>cd /opt/windows; mkdir sysinternalssuite; wget https://download.sysinternals.com/files/SysinternalsSuite.zip; mv SysinternalsSuite.zip sysinternalssuite; cd sysinternalssuite; unzip SysinternalsSuite.zip;cd $PWD_START;</cmd>
                 </Sysinternal>
-                <MremoteNG-Decrypt>
-                        <cmd>cd /opt/windows; git clone https://github.com/haseebT/mRemoteNG-Decrypt mremoteng-decrypt; cd mremoteng-decrypt; pip install pyinstaller; pyinstaller mremoteng_decrypt.py; pip install pycryptodome; pip install pycryptodomex;cd $PWD_START;</cmd>
-                </MremoteNG-Decrypt>
-                <VncPassword>
-                	<cmd>git clone https://github.com/trinitronx/vncpasswd.py /opt/windows/vncpassword;</cmd>
-                </VncPassword>
                 <Evil-Winrm>
                         <cmd>gem install evil-winrm;cd $PWD_START;</cmd>
                 </Evil-Winrm>
@@ -111,8 +104,6 @@
                 	<cmd>git clone https://github.com/int0x33/nc.exe /opt/windows/nc;</cmd>
                 </Nc.exe>
         </Windows>
-
-
         <Linux>
                 <Pspy>
                         <cmd>cd /opt/linux; mkdir pspy; cd pspy; wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64; wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32;cd $PWD_START;</cmd>
@@ -145,19 +136,15 @@
                 <Ffuf>
                         <cmd>su -c "go get github.com/ffuf/ffuf" $SUDO_USER;echo OK;</cmd>
                 </Ffuf>
-		<gobuster>
-			<cmd>su -c "go get github.com/OJ/gobuster" $SUDO_USER;echo OK;</cmd>
-		</gobuster>
+				<gobuster>
+					<cmd>su -c "go get github.com/OJ/gobuster" $SUDO_USER;echo OK;</cmd>
+				</gobuster>
         </Web>
-
 
         <Cracking>
                 <Hexedit>
                         <cmd>apt-get install hexedit;cd $PWD_START;</cmd>
                 </Hexedit>
-                <Cisco_pwdecrypt>
-                        <cmd>git clone https://github.com/axcheron/cisco_pwdecrypt /opt/cracking/cisco_pwdecrypt;cd $PWD_START;</cmd>
-                </Cisco_pwdecrypt>
                 <Pdfcrack>
                         <cmd>apt-get install pdfcrack;</cmd>
                 </Pdfcrack>
@@ -168,8 +155,17 @@
                         <cmd>echo "Y" | apt-get install steghide;</cmd>
                 </Steghide>
         </Cracking>
-
-
+        <Software_specifique_cracking_tools>
+                <Cisco_pwdecrypt>
+                        <cmd>git clone https://github.com/axcheron/cisco_pwdecrypt /opt/cracking/cisco_pwdecrypt;cd $PWD_START;</cmd>
+                </Cisco_pwdecrypt>
+                <MremoteNG-Decrypt>
+                        <cmd>cd /opt/windows; git clone https://github.com/haseebT/mRemoteNG-Decrypt mremoteng-decrypt; cd mremoteng-decrypt; pip install pyinstaller; pyinstaller mremoteng_decrypt.py; pip install pycryptodome; pip install pycryptodomex;cd $PWD_START;</cmd>
+                </MremoteNG-Decrypt>
+                <VncPassword>
+                	<cmd>git clone https://github.com/trinitronx/vncpasswd.py /opt/windows/vncpassword;</cmd>
+                </VncPassword>
+        </Software_specifique_cracking_tools>
         <Reverse>
                 <Ropper>
                         <cmd>pip install ropper;cd $PWD_START;</cmd>
@@ -181,21 +177,21 @@
                         <cmd>git clone https://github.com/longld/peda.git /opt/reverse/peda; echo "source /opt/reverse/peda/peda.py" >> /home/$SUDO_USER/.gdbinit;cd $PWD_START;</cmd>
                 </Gdb-peda>
                 <ILSpy-ILSpyAvalonia>
-                	<cmd>apt-get update;apt-get install -y apt-transport-https dotnet-sdk-3.1 powershell;wget https://packages.microsoft.com/config/ubuntu/19.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; dpkg -i packages-microsoft-prod.deb; rm packages-microsoft-prod.deb; git clone https://github.com/icsharpcode/ILSpy /opt/reverse/ILSpy;cd /opt/reverse/ILSpy; git submodule update --init --recursive;dotnet build Frontends.sln;cd $PWD_START;wget https://ci.appveyor.com/api/projects/icsharpcode/avaloniailspy/artifacts/artifacts%2Fzips%2FILSpy-linux-x64-Release.zip?branch=master /opt/reverse/;tar -xvzf /opt/reverse/ILSpy-linux-x64-Release.zip /opt/reverse/ILSpyAvalonia;rm /opt/reverse/ILSpy-linux-x64-Release.zip; chmod a+x /opt/reverse/ILSpyAvalonia/ILSpy</cmd>
+                	<cmd>apt-get update;apt-get install -y apt-transport-https dotnet-sdk-3.1;wget https://packages.microsoft.com/config/ubuntu/19.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; dpkg -i packages-microsoft-prod.deb; rm packages-microsoft-prod.deb; git clone https://github.com/icsharpcode/ILSpy /opt/reverse/ILSpy;cd /opt/reverse/ILSpy; git submodule update --init --recursive;dotnet build Frontends.sln;mkdir /opt/reverse/ILSpyAvalonia;wget https://ci.appveyor.com/api/projects/icsharpcode/avaloniailspy/artifacts/artifacts%2Fzips%2FILSpy-linux-x64-Release.zip?branch=master -O /opt/reverse/ILSpyAvalonia/ILSpy-linux-x64-Release.zip;cd /opt/reverse/ILSpyAvalonia;unzip /opt/reverse/ILSpyAvalonia/ILSpy-linux-x64-Release.zip;rm /opt/reverse/ILSpyAvalonia/ILSpy-linux-x64-Release.zip; chmod a+x /opt/reverse/ILSpyAvalonia/ILSpy;cd $PWD_START;</cmd>
                 </ILSpy-ILSpyAvalonia>
                 <Ghidra>
                 	<cmd>
-                		cd /opt/reverse;wget https://ghidra-sre.org/ghidra_9.0.1_PUBLIC_20190325.zip;unzip ghidra_9.0.1_PUBLIC_20190325.zip;rm ghidra_9.0.1_PUBLIC_20190325.zip;cd ghidra_9.0.1;add-apt-repository ppa:openjdk-r/ppa;apt update;apt install -y openjdk-11-jdk openjdk-11-jre-headless; cd $PWD_START;
+                		cd /opt/reverse;wget https://ghidra-sre.org/ghidra_9.0.1_PUBLIC_20190325.zip;unzip ghidra_9.0.1_PUBLIC_20190325.zip;rm ghidra_9.0.1_PUBLIC_20190325.zip;cd ghidra_9.0.1;add-apt-repository ppa:openjdk-r/ppa;apt update;apt install -y openjdk-11-jdk openjdk-11-jre-headless; chmod +x /opt/reverse/ghidra_9.0.1; cd $PWD_START;
                 	</cmd>
                 </Ghidra>
                 <IDA>
-                	<cmd>wget https://out7.hex-rays.com/files/idafree70_linux.run -O /opt/reverse/idafree70_linux.run;</cmd>
+                	<cmd>wget https://out7.hex-rays.com/files/idafree70_linux.run -O /opt/reverse/idafree70_linux.run;chmod +x /opt/reverse/idafree70_linux.run;</cmd>
                 </IDA>
                 <Edb-Debugger>
-                	<cmd>git clone --recursive https://github.com/eteran/edb-debugger.git /opt/reverse/edb-debugger;cd /opt/reverse/edb-debugger; make install; cd $PWD_START;</cmd>
+                	<cmd>sudo apt-get install -y pkg-config cmake build-essential libboost-dev libqt5xmlpatterns5-dev qtbase5-dev qt5-default libgraphviz-dev libqt5svg5-dev libcapstone-dev;git clone --recursive https://github.com/eteran/edb-debugger.git /opt/reverse/edb-debugger;cd /opt/reverse/edb-debugger;mkdir build;cd build; cmake ..;make; cd $PWD_START;</cmd>
                 </Edb-Debugger>
                 <Cutter>
-                	<cmd>apt install radare2-cutter;</cmd>
+                	<cmd>apt install -y radare2-cutter;</cmd>
                 </Cutter>
         </Reverse>
 

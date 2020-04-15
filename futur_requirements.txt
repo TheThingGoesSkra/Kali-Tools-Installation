@@ -3,6 +3,8 @@
  golang
  rpcbind
  python3-pip
+ cmake
+ powershell
  libnss3-tools
  cifs-utils
  xfce4-terminal
