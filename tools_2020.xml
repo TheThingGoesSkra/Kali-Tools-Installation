@@ -89,7 +89,7 @@
                 	<cmd>pip install --user pipenv;git clone --recursive https://github.com/byt3bl33d3r/CrackMapExec /opt/windows/CrackMapExec;cd /opt/windows/CrackMapExec;pip install -r requirements.txt;pipenv install; pipenv shell; python setup.py install;ln -s CrackMapExec/build/lib.linux-x86_64-2.7/cme/data/powersploit/ /opt/windows/PowerSploit;cd $PWD_START;</cmd>
                 </CrackMapExec-PowerSploit>
 		<Bloodhound>
-			<cmd>apt-get install -y bloodhound;git clone https://github.com/adaptivethreat/Bloodhound /opt/windows/bloodhound;</cmd>
+			<cmd>apt-get install -y bloodhound;git clone https://github.com/adaptivethreat/Bloodhound /opt/windows/bloodhound;su -c "mkdir /usr/share/neo4j/logs/" $SUDO_USER;su -c "mkdir /usr/share/neo4j/run" $SUDO_USER;</cmd>
 		</Bloodhound>
                 <Bloodhound-Python>
                 	<cmd>pip install bloodhound;</cmd>
