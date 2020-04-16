@@ -80,7 +80,7 @@
                 	<cmd>git clone https://github.com/ropnop/windapsearch /opt/windows/windapsearch; pip install -r /opt/windows/windapsearch/requirements.txt;</cmd>
                 </windapsearch>
                 <jxplorer>
-                	<cmd>echo "y" | apt get install jxplorer;</cmd>
+                	<cmd>echo "y" | apt install jxplorer;</cmd>
                 </jxplorer>
                 <SimpleBITSServer>
                 	<cmd>git clone https://github.com/SafeBreach-Labs/SimpleBITSServer /opt/windows;</cmd>
