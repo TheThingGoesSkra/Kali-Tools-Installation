@@ -17,3 +17,6 @@
  libffi-dev 
  python-dev 
  build-essential
+ ttf-ancient-fonts
+ ttf-ancient-fonts-symbola
+ fonts-noto-color-emoji
