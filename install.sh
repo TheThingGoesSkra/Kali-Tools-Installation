@@ -108,6 +108,7 @@ for node in $nodes; do
 			dfolder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default-release' -print -quit);
 			cp -r $dfolder/extensions $pfolder
 			cp $dfolder/extensions.json $pfolder/extensions.json
+			chown -R $SUDO_USER:$SUDO_USER $pfolder
 		fi
 	fi
 done
