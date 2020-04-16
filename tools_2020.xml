@@ -36,7 +36,7 @@
 			<cmd>wget https://download.jetbrains.com/python/pycharm-community-2020.1.tar.gz;</cmd>
 		</PyCharm>
 		<Cron-Auto-Push>
-			<cmd>git clone https://github.com/tejvuligonda/Cron-Auto-Push /home/$SUDO_USER;cd $PWD_START;</cmd>
+			<cmd>git clone https://github.com/tejvuligonda/Cron-Auto-Push /opt/setup/Cron-Auto-Push;cd $PWD_START;</cmd>
 		</Cron-Auto-Push>
         </Environnement>
 
@@ -92,7 +92,7 @@
                         <cmd>git clone https://github.com/adaptivethreat/Bloodhound /opt/windows/bloodhound; curl -sL https://deb.nodesource.com/setup_13.x | bash -; export APP_PID=$!; wait $APP_PID; apt-get install -y nodejs; npm install -g electron-packager; cd /opt/windows/bloodhound; npm install; npm install; npm run linuxbuild; cd /opt/windows; wget https://neo4j.com/artifact.php?name=neo4j-community-3.5.12-unix.tar.gz -O neo4j-community-3.5.12-unix.tar.gz; tar -xzf neo4j-community-3.5.12-unix.tar.gz; rm neo4j-community-3.5.12-unix.tar.gz;cd $PWD_START;</cmd>
                 </Bloodhound>
                 <Bloodhound-Python>
-                	<cmd>pip install bloodhound-python;</cmd>
+                	<cmd>pip install bloodhound;</cmd>
                 </Bloodhound-Python>
                 <Sysinternal>
                         <cmd>cd /opt/windows; mkdir sysinternalssuite; wget https://download.sysinternals.com/files/SysinternalsSuite.zip; mv SysinternalsSuite.zip sysinternalssuite; cd sysinternalssuite; unzip SysinternalsSuite.zip;cd $PWD_START;</cmd>
@@ -177,7 +177,7 @@
                         <cmd>git clone https://github.com/longld/peda.git /opt/reverse/peda; echo "source /opt/reverse/peda/peda.py" >> /home/$SUDO_USER/.gdbinit;cd $PWD_START;</cmd>
                 </Gdb-peda>
                 <ILSpy-ILSpyAvalonia>
-                	<cmd>apt-get update;apt-get install -y apt-transport-https dotnet-sdk-3.1;wget https://packages.microsoft.com/config/ubuntu/19.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; dpkg -i packages-microsoft-prod.deb; rm packages-microsoft-prod.deb; git clone https://github.com/icsharpcode/ILSpy /opt/reverse/ILSpy;cd /opt/reverse/ILSpy; git submodule update --init --recursive;dotnet build Frontends.sln;mkdir /opt/reverse/ILSpyAvalonia;wget https://ci.appveyor.com/api/projects/icsharpcode/avaloniailspy/artifacts/artifacts%2Fzips%2FILSpy-linux-x64-Release.zip?branch=master -O /opt/reverse/ILSpyAvalonia/ILSpy-linux-x64-Release.zip;cd /opt/reverse/ILSpyAvalonia;unzip /opt/reverse/ILSpyAvalonia/ILSpy-linux-x64-Release.zip;rm /opt/reverse/ILSpyAvalonia/ILSpy-linux-x64-Release.zip; chmod a+x /opt/reverse/ILSpyAvalonia/ILSpy;cd $PWD_START;</cmd>
+                	<cmd>wget https://packages.microsoft.com/config/ubuntu/19.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; dpkg -i packages-microsoft-prod.deb; rm packages-microsoft-prod.deb;apt-get update;apt-get install -y apt-transport-https dotnet-sdk-3.1;git clone https://github.com/icsharpcode/ILSpy /opt/reverse/ILSpy;cd /opt/reverse/ILSpy; git submodule update --init --recursive;dotnet build Frontends.sln;mkdir /opt/reverse/ILSpyAvalonia;wget https://ci.appveyor.com/api/projects/icsharpcode/avaloniailspy/artifacts/artifacts%2Fzips%2FILSpy-linux-x64-Release.zip?branch=master -O /opt/reverse/ILSpyAvalonia/ILSpy-linux-x64-Release.zip;cd /opt/reverse/ILSpyAvalonia;unzip /opt/reverse/ILSpyAvalonia/ILSpy-linux-x64-Release.zip;rm /opt/reverse/ILSpyAvalonia/ILSpy-linux-x64-Release.zip; chmod a+x /opt/reverse/ILSpyAvalonia/ILSpy;cd $PWD_START;</cmd>
                 </ILSpy-ILSpyAvalonia>
                 <Ghidra>
                 	<cmd>

@@ -102,8 +102,8 @@ for node in $nodes; do
 			########################## Firefox extensions ##########################
 			su -c "firefox *.xpi" $SUDO_USER
 			rm *.xpi
-			pfolder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.proxy' -print -quit);
-			dfolder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default-esr' -print -quit);
+			pfolder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.roxy' -print -quit);
+			dfolder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default-release' -print -quit);
 			cp -r $dfolder/extensions $pfolder/extensions
 			cp $dfolder/extensions.json $pfolder/extensions.json
 		fi
