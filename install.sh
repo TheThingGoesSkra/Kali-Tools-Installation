@@ -106,7 +106,7 @@ for node in $nodes; do
 			rm *.xpi
 			pfolder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.roxy' -print -quit);
 			dfolder=$(find /home/$SUDO_USER/.mozilla/firefox/ -maxdepth 1 -type d -name '*.default-release' -print -quit);
-			cp -r $dfolder/extensions $pfolder/extensions
+			cp -r $dfolder/extensions $pfolder
 			cp $dfolder/extensions.json $pfolder/extensions.json
 		fi
 	fi
