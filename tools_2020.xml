@@ -21,7 +21,7 @@
                         <cmd>cd /home/$SUDO_USER;rm .bashrc;git init;git remote add origin https://github.com/TheThingGoesSkra/Bash_config.git;git pull origin master;mkdir /home/$SUDO_USER/.font;cd /home/$SUDO_USER/.font;wget https://github.com/supermarin/YosemiteSanFranciscoFont/blob/master/System%20San%20Francisco%20Display%20Regular.ttf?raw=true -O /home/$SUDO_USER/.font/System\ San\ Francisco\ Display\ Regular.ttf;pip install powerline-status;mkdir /home/$SUDO_USER/.local/share/fonts;cd /home/$SUDO_USER/.local/share/fonts;wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf;fc-cache -vf /home/$SUDO_USER/.local/share/fonts/;mkdir /home/$SUDO_USER/.config/fontconfig;mkdir /home/$SUDO_USER/.config/fontconfig/conf.d; echo "Y" | apt-get install vim-gtk;export TERM=”screen-256color”;git clone https://github.com/thethinggoesskra/vim_config /home/$SUDO_USER/.vim;cd $PWD_START;</cmd>
                 </Bashrc-Pureline-Powerline>
                 <Fish>
-                        <cmd>echo "y" | apt-get install fish; su -c "chsh -s /usr/bin/fish" $SUDO_USER; git clone https://github.com/TheThingGoesSkra/Fish_config /home/$SUDO_USER/.config/fish; sudo chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config/fish; curl -L https://get.oh-my.fish --output install; su -c "xfce4-terminal -e \"fish -c 'fish install'\"" $SUDO_USER;export APP_PID=$!;sleep 15; pkill fish; cd /home/$SUDO_USER/.local/share/omf;rm -rf themes;git clone https://github.com/TheThingGoesSkra/Omf_themes themes; ln /home/$SUDO_USER/.local/share/omf/themes/agnoster/fish_prompt.fish /home/$SUDO_USER/.config/fish/functions/fish_prompt.fish;cd $PWD_START;</cmd>
+                        <cmd>echo "y" | apt-get install fish; su -c "chsh -s /usr/bin/fish" $SUDO_USER; git clone https://github.com/TheThingGoesSkra/Fish_config /home/$SUDO_USER/.config/fish; sudo chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config/fish; curl -L https://get.oh-my.fish --output install; su -c "xfce4-terminal -e \"fish -c 'fish install'\"" $SUDO_USER;sleep 15; pkill fish; cd /home/$SUDO_USER/.local/share/omf;rm -rf themes;git clone https://github.com/TheThingGoesSkra/Omf_themes themes; ln /home/$SUDO_USER/.local/share/omf/themes/agnoster/fish_prompt.fish /home/$SUDO_USER/.config/fish/functions/fish_prompt.fish;cd $PWD_START;</cmd>
                 </Fish>
                 <Terminator>
                         <cmd>echo "deb http://http.kali.org/kali kali main" >> /etc/apt/sources.list;apt-get update; echo "y" | apt-get install terminator; dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'terminator.desktop', 'firefox-esr.desktop', 'org.gnome.gedit.desktop', 'kali-msfconsole.desktop', 'kali-burpsuite.desktop', 'zenmap-root.desktop', 'cherrytree.desktop']"; git clone https://github.com/TheThingGoesSkra/Terminator_config /home/$SUDO_USER/.config/terminator;cd $PWD_START;</cmd>
@@ -88,9 +88,9 @@
                 <CrackMapExec-PowerSploit>
                 	<cmd>pip install --user pipenv;git clone --recursive https://github.com/byt3bl33d3r/CrackMapExec /opt/windows/CrackMapExec;cd /opt/windows/CrackMapExec;pip install -r requirements.txt;pipenv install; pipenv shell; python setup.py install;ln -s CrackMapExec/build/lib.linux-x86_64-2.7/cme/data/powersploit/ /opt/windows/PowerSploit;cd $PWD_START;</cmd>
                 </CrackMapExec-PowerSploit>
-		<Bloodhound-Apt>
+		<Bloodhound>
 			<cmd>apt-get install bloodhound;git clone https://github.com/adaptivethreat/Bloodhound /opt/windows/bloodhound;</cmd>
-		</Bloodhound-Apt>
+		</Bloodhound>
                 <Bloodhound-Python>
                 	<cmd>pip install bloodhound;</cmd>
                 </Bloodhound-Python>
