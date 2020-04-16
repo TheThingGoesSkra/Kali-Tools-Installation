@@ -171,7 +171,7 @@
                         <cmd>pip install ropper;cd $PWD_START;</cmd>
                 </Ropper>
                 <Hopper>
-                        <cmd>curl https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-4.5.19-Linux.deb --output Hopper-v4-4.5.19-Linux.deb; dpkg -i Hopper-v4-4.5.19-Linux.deb; rm Hopper-v4-4.5.19-Linux.deb;</cmd>
+			<cmd>curl https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-4.5.19-Linux.deb --output Hopper-v4-4.5.19-Linux.deb; dpkg -i Hopper-v4-4.5.19-Linux.deb; rm Hopper-v4-4.5.19-Linux.deb;mv /opt/hopper-v4 /opt/reverse/hopper-v4;</cmd>
                 </Hopper>
                 <Gdb-peda>
                         <cmd>git clone https://github.com/longld/peda.git /opt/reverse/peda; echo "source /opt/reverse/peda/peda.py" >> /home/$SUDO_USER/.gdbinit;cd $PWD_START;</cmd>
