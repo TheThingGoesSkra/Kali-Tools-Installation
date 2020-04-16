@@ -83,7 +83,7 @@
                 	<cmd>echo "y" | apt install jxplorer;</cmd>
                 </jxplorer>
                 <SimpleBITSServer>
-                	<cmd>git clone https://github.com/SafeBreach-Labs/SimpleBITSServer /opt/windows;</cmd>
+                	<cmd>git clone https://github.com/SafeBreach-Labs/SimpleBITSServer /opt/windows/SimpleBITSServer;</cmd>
                 </SimpleBITSServer>
                 <CrackMapExec-PowerSploit>
                 	<cmd>pip install --user pipenv;git clone --recursive https://github.com/byt3bl33d3r/CrackMapExec /opt/windows/CrackMapExec;cd /opt/windows/CrackMapExec;pip install -r requirements.txt;pipenv install; pipenv shell; python setup.py install;ln -s CrackMapExec/build/lib.linux-x86_64-2.7/cme/data/powersploit/ /opt/windows/PowerSploit;cd $PWD_START;</cmd>
