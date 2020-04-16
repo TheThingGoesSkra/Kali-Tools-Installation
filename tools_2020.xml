@@ -70,7 +70,10 @@
         <Kit>
                 <windows>
                 	<cmd>git clone https://github.com/phackt/pentest /opt/kit; cp -r /opt/kit/privesc/windows /opt/kit/windows;rm -rf /opt/pentest;</cmd>
-                </windows>
+		</windows>
+		<Wall6e-Scripts>
+                        <cmd>git clone https://github.com/TheThingGoesSkra/Wall6e-Scripts /opt/kit/Wall6e-Scripts;</cmd>
+                </Wall6e-Scripts>
         </Kit>
         <Windows>
                 <Impacket>
@@ -130,9 +133,6 @@
                 <wwwolf-php-webshell>
                         <cmd>git clone https://github.com/WhiteWinterWolf/wwwolf-php-webshell /opt/web/wwwolf-php-webshell;</cmd>
                 </wwwolf-php-webshell>
-                <Wall6e-Web-Scripts>
-                        <cmd>git clone https://github.com/TheThingGoesSkra/Wall6e-Web-Scripts /opt/web/Wall6e-web-scripts;</cmd>
-                </Wall6e-Web-Scripts>
                 <Ffuf>
                         <cmd>su -c "go get github.com/ffuf/ffuf" $SUDO_USER;echo OK;</cmd>
                 </Ffuf>
